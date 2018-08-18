@@ -1,1 +1,31 @@
-@import '~bootstrap/scss/bootstrap';
+.container {
+  // display: inline-grid;
+  grid-template-columns: repeat(6, .1fr);
+  grid-gap: .5vw;
+  // grid-auto-rows: minmax(50px, auto);
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.square {
+  display: inline-block;
+  // float: left;
+  // object-fit: scale-down;
+}
+
+img {
+  max-width: object-fit;
+}
+
+// .square:hover {
+//   background: black;
+//   cursor: pointer;
+//   mix-blend-mode: multiply;
+//   opacity: .2;
+//  }
+
+// .row {
+//   margin-left: auto;
+//   margin-right: auto;
+//   width: 80%;
+// }
