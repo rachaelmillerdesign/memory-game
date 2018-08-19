@@ -59,36 +59,37 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 /* The Modal (background) */
 .modal {
   background-color: #e2f984;
-  outline: none;
   display: none;
+  height: auto;
+  outline: none;
   position: fixed;
     top: 25%;
     left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  height: auto;
+
 }
 
 /* The Close Button */
 .close {
-  border: none;
-  outline: none;
+  border: 0;
   color: #9ece00;
   float: right;
   font-size: 1.4rem;
   // font-size: 24px;
   font-weight: 300;
+  outline: none;
   padding: 4vw;
 }
 
 .close-fail {
-  border: none;
-  outline: none;
+  border: 0;
   color: #f98900;
   float: right;
   // font-size: 24px;
   font-size: 1.4rem;
   font-weight: 300;
+  outline: none;
   padding: 4vw;
 }
 
