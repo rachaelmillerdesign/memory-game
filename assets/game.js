@@ -1,9 +1,7 @@
 let emptyBoard = []
-let card =
-let pairFound =
 let m
 let i
-
+let array =
 // ~~~~~~~~~~~~~~~~~~~~~
 // CREATE NEW GAME
 // ~~~~~~~~~~~~~~~~~~~~~
@@ -55,7 +53,7 @@ TODO button.onClick = startGame();
 
 var flipCard = function () {
   this.classList.toggle("show")
-  this.classList.toggle("disabled")
+  this.classList.toggle("unclickable")
   this.classList.toggle("cardInUse")
 }
 // ~~~~~~~~~~~~~~~~~~~~~
@@ -101,16 +99,16 @@ function unmatched(){
 //disable cards temporarily
 function disable(){
     Array.prototype.filter.call(cards, function(card){
-        card.classList.add('disabled');
+        card.classList.add('unclickable');
     });
 }
 
 //enable cards and disable matched cards
 function enable(){
     Array.prototype.filter.call(cards, function(card){
-        card.classList.remove('disabled');
+        card.classList.remove('unclickable');
         for(var i = 0; i < matchedCard.length; i++){
-            matchedCard[i].classList.add("disabled");
+            matchedCard[i].classList.add("unclickable");
         }
     });
 }
@@ -126,7 +124,7 @@ StartGame(){
         [].forEach.call(cards, function(item) {
             deck.appendChild(item);
         });
-        cards[i].classList.remove("show", "open", "match",            "disabled");
+        cards[i].classList.remove("show", "open", "match", "unclickable");
      }
      // reset moves
      moves = 0;
@@ -145,6 +143,7 @@ StartGame(){
     // PLAY AGAIN
     // ~~~~~~~~~~~~~~~~~~~~~
     //for player to play Again
+
 function playAgain(){
     modal.classList.remove("show");
     startGame();
