@@ -19,6 +19,26 @@
       </style>
     </head>
     <body class="container-fluid">
+
+      <!-- The Modal -->
+    <div class="modal" id="playMemoryGame" tabindex="-1" role="dialog">
+      <button type="button" data-dismiss="modal" aria-label="Close">
+        <div class="modal-body">
+          <h4>play memory game!</h4>
+        </div>
+      </button>
+    </div>
+
+    <ul class='nav'>
+      <li><a id='home'>HOME</a></li>
+      <li><a id='sign-up'></a>SIGN UP</li>
+      <li><a id='sign-in'>SIGN IN</a></li>
+      <li><a id='sign-out'>SIGN OUT</a></li>
+      <li><a id='change-password'></a>CHANGE PASSWORD</li>
+      <li><a id='play'>PLAY GAME</a></li>
+    </ul>
+    <!-- /The Modal -->
+
       <!-- <form id="sign-up" class="border">
               <fieldset>
                 <legend>Sign up!</legend>
@@ -70,7 +90,7 @@
 
       <!-- TIC TAC TOE BOARD -->
 
-        <h2>FIND THE PAIRS</h2>
+        <h2 class='hidden'>FIND THE PAIRS</h2>
           <!-- <div class="container"> -->
             <ul class="board">
             <li id="0" class="square" <img src="https://imgur.com/VkSvbbI"><img src="https://i.imgur.com/VkSvbbI.jpg" title="source: imgur.com"/></li>
@@ -112,11 +132,6 @@
           </ul>
           <!-- </div> -->
 
-      <ul class='nav'>
-        <li><a id='game-new'>NEW GAME</a></li>
-        <li><a id='win-draw'></a></li>
-        <!-- <li><a id='getGames'>GET SCORES</a></li> -->
-        <li><a id='quit'>QUIT</a></li>
-      </ul>
+
     </body>
 </html>
