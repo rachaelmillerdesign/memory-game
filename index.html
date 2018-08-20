@@ -21,16 +21,16 @@
     <body class="container-fluid">
 
       <!-- The Modal -->
-    <div class="modal" id="playMemoryGame" tabindex="-1" role="dialog">
+    <!-- <div class="modal hidden" id="playMemoryGame" tabindex="-1" role="dialog">
       <button type="button" data-dismiss="modal" aria-label="Close">
         <div class="modal-body">
           <h4>play memory game!</h4>
         </div>
       </button>
-    </div>
+    </div> -->
 
     <!-- /The Modal -->
-        <div class="modal hidden" tabindex="-1" role="dialog">
+        <div class="modal hidden" id="signUp-modal" tabindex="-1" role="dialog">
           <button type="button" class="close-fail" data-dismiss="modal" aria-label="Close">
             <form id="sign-up" class="border">
               <fieldset>
@@ -44,6 +44,8 @@
           </button>
         </div>
 
+        <div class="modal hidden" id="signIn-modal" tabindex="-1" role="dialog">
+          <button type="button" class="close-fail" data-dismiss="modal" aria-label="Close">
             <form id="sign-in" class="border">
               <fieldset>
                 <legend>Sign in!</legend>
@@ -52,14 +54,22 @@
                 <input type="submit" value="Sign in!">
               </fieldset>
             </form>
+          </button>
+        </div>
 
+        <div class="modal hidden" id="sign-out" tabindex="-1" role="dialog">
+          <button type="button" class="close-fail" data-dismiss="modal" aria-label="Close">
             <form id="sign-out" class="hidden border">
               <fieldset>
                 <legend>Sign Out!</legend>
                 <input type="submit" value="Sign out!">
               </fieldset>
             </form>
+          </button>
+        </div>
 
+        <div class="modal hidden" id=change-password tabindex="-1" role="dialog">
+          <button type="button" class="close-fail" data-dismiss="modal" aria-label="Close">
             <form id="change-password" class="hidden border">
               <fieldset>
                 <legend>Change Password!</legend>
@@ -68,17 +78,19 @@
                 <input type="submit" value="Change Password!">
               </fieldset>
             </form>
+          </button>
+        </div>
 
             <ul class='nav'>
               <li><a id='home'>HOME</a></li>
-              <li><a id='sign-up'></a>SIGN UP</li>
-              <li><a id='sign-in'>SIGN IN</a></li>
-              <li><a id='sign-out'>SIGN OUT</a></li>
-              <li><a id='change-password'></a>CHANGE PASSWORD</li>
+              <li><a id='signUpNav'>SIGN UP</a></li>
+              <li><a id='sign-in=nav'>SIGN IN</a></li>
+              <li><a id='sign-out-nav'>SIGN OUT</a></li>
+              <li><a id='change-password-nav'>CHANGE PASSWORD</a></li>
               <li><a id='play'>PLAY GAME</a></li>
             </ul>
 
-        <h2 class='hidden'>FIND THE PAIRS</h2>
+        <!-- <h2 class='hidden'>FIND THE PAIRS</h2> -->
           <!-- <div class="container"> -->
             <ul class="board">
             <li id="0" class="square" <img src="https://imgur.com/VkSvbbI"><img src="https://i.imgur.com/VkSvbbI.jpg" title="source: imgur.com"/></li>

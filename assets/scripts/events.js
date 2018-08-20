@@ -46,15 +46,16 @@ const onChangePassword = function (event) {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
+
 // ~~~~~~~~~~~~~~~~~~~~~~
 // HANDLERS
 // ~~~~~~~~~~~~~~~~~~~~~~
-
 const addHandlers = () => {
-  $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
-  $('#sign-out').on('submit', onSignOut)
-  $('#change-password').on('submit', onChangePassword)
+  console.log("in handler 'click'")
+  $('#signUpNav').on('click', ui.showSignUpModal)
+  $('#sign-in-nav').on('submit', onSignIn)
+  $('#sign-out-nav').on('submit', onSignOut)
+  $('#change-password-nav').on('submit', onChangePassword)
 }
 
 module.exports = {

@@ -15,7 +15,7 @@ ul {
   grid-template-columns: repeat(6, 1fr);
   margin: 0 auto;
   max-width: 90%;
-  padding: 4vw 0 0 0;
+  padding: 4vw 0 0;
 }
 
 li {
@@ -47,10 +47,17 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   display: none;
 }
 
+// ~~~~~~~~~~~~~~~~~~~~~
+// NAVBAR
+// ~~~~~~~~~~~~~~~~~~~~~
 .nav {
   color: grey;
   font-size: 2vw;
   font-weight: 300;
+}
+
+.nav li:hover {
+  background-color: aqua;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~
@@ -58,16 +65,26 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 // ~~~~~~~~~~~~~~~~~~~~~
 /* The Modal (background) */
 .modal {
-  background-color: #e2f984;
-  display: none;
-  height: auto;
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  padding-top: 10vw;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 100%;
+  overflow: auto;
+  z-index: 1;
+}
+
+.button {
+  background-color: white;
+  margin: none;
   outline: none;
   position: fixed;
-    top: 25%;
-    left: 50%;
   transform: translate(-50%, -50%);
+  height: 30%;
+  width: 50%;
   z-index: 1;
-
 }
 
 /* The Close Button */
@@ -76,7 +93,6 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   color: #9ece00;
   float: right;
   font-size: 1.4rem;
-  // font-size: 24px;
   font-weight: 300;
   outline: none;
   padding: 4vw;
@@ -102,6 +118,14 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 
 button:active {
   border-style: none;
+  border-color: none;
+}
+
+:focus {
+  outline: -webkit-focus-ring-color none;
+  outline-color: none;
+  outline-style: auto;
+  outline-width: 0;
 }
 // ~~~~~~~~~~~~~~~~~~~~~
 // BODY
