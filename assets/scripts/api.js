@@ -1,7 +1,7 @@
 'use strict'
 
-const config = require('../config')
-const store = require('../store')
+const config = require('./config')
+const store = require('./store')
 
 // ~~~~~~~~~~~~~~~~~~~~
 //  SIGN UP SIGN IN API

@@ -1,6 +1,6 @@
 'use strict'
 
-const getFormFields = require(`../../../lib/get-form-fields`)
+const getFormFields = require(`../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
@@ -52,10 +52,14 @@ const onChangePassword = function (event) {
 // ~~~~~~~~~~~~~~~~~~~~~~
 const addHandlers = () => {
   console.log("in handler 'click'")
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
+  $('#sign-out').on('submit', onSignOut)
+  $('#change-password').on('submit', onChangePassword)
   $('#signUpNav').on('click', ui.showSignUpModal)
-  $('#sign-in-nav').on('submit', onSignIn)
-  $('#sign-out-nav').on('submit', onSignOut)
-  $('#change-password-nav').on('submit', onChangePassword)
+  $('#signInNav').on('click', ui.showSignInModal)
+  $('#signOutNav').on('click', ui.showSignOutModal)
+  $('#changePasswordNav').on('click', ui.showChangePasswordModal)
 }
 
 module.exports = {

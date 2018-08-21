@@ -127,7 +127,7 @@ const showSignOutModal = function () {
   $('#signOut-modal').toggleClass('hidden')
 }
 
-const changePasswordModal = function () {
+const showChangePasswordModal = function () {
   console.log('password changed')
   $('#changePassword-modal').toggleClass('hidden')
 }
@@ -139,7 +139,7 @@ module.exports = {
   showSignUpModal,
   showSignInModal,
   showSignOutModal,
-  changePasswordModal
+  showChangePasswordModal
   // signUpSuccess,
   // signUpFailure,
   // signInSuccess,

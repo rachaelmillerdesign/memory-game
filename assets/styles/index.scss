@@ -66,47 +66,52 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 /* The Modal (background) */
 .modal {
   background-color: rgba(0,0,0,0.4);
-  position: fixed;
-  padding-top: 10vw;
-  top: 0;
-  left: 0;
-  width: auto;
+  // float: right;
   height: 100%;
   overflow: auto;
+  padding-top: 15vw;
+  position: fixed;
+    // left: 50%;
+    // top: 25%;
+  width: 100%;
   z-index: 1;
 }
 
 .button {
   background-color: white;
-  margin: none;
+  // float: right;
   outline: none;
-  position: fixed;
-  transform: translate(-50%, -50%);
-  height: 30%;
-  width: 50%;
+  // margin: 0 auto;
+  // height: 30%;
+  // width: 50%;
   z-index: 1;
 }
 
 /* The Close Button */
 .close {
-  border: 0;
+  border: none;
   color: #9ece00;
-  float: right;
+  // float: right;
   font-size: 1.4rem;
   font-weight: 300;
   outline: none;
-  padding: 4vw;
+  padding: 2vw;
 }
 
 .close-fail {
-  border: 0;
+  border: none;
   color: #f98900;
-  float: right;
+  // float: right;
   // font-size: 24px;
   font-size: 1.4rem;
   font-weight: 300;
+  margin: 0 auto;
   outline: none;
-  padding: 4vw;
+  padding: 5px;
+  position: fixed;
+    left: 50%;
+    top: 25%;
+  // transform: translate(-50%, -50%);
 }
 
 .close:hover,
