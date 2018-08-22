@@ -54,8 +54,9 @@ const onGetAllCreatures = function (event) {
   console.log('index()')
 }
 const closeModals = function () {
-document.getElementByClass('closeButton')
-
+  $('#closeButton').on('click',
+    $('#modal').toggleClass('hidden')
+  )
 }
 // ~~~~~~~~~~~~~~~~~~~~~~
 // HANDLERS

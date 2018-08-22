@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('./store')
+const game = require('../game')
 
 const signUpSuccess = function (data) {
   $('#signUp-modal').addClass('hidden')
@@ -55,10 +56,6 @@ const signInFailure = function (error) {
 }
 
 const signOutSuccess = function () {
-  // $('#sign-in').removeClass('hidden')
-  // $('#signUp-modal').removeClass('hidden')
-  // $('#sign-out').addClass('hidden')
-  // $('#change-password').addClass('hidden')
   $('#signOutSuccess').modal({
     show: true
   })
@@ -102,15 +99,12 @@ const changePasswordFailure = function (error) {
   $('#change-password')[0].reset()
   console.error('changePasswordFailure ran. Error is :', error)
 }
-// const getAllCreaturesSuccess = function () {
-//   $('#imgId').setSrc(data.image)
-//   $('#getAllCreaturesSuccess').modal({
-//     show: true
-//   })
-//   setTimeout(function () {
-//     $('#getAllCreaturesSuccess').modal('hide')
-//   }, 2000)
-// }
+
+const getAllCreaturesSuccess = function (data) {
+  store.creatures = data.creatures
+  game.fillBoard()
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~
 // NAVBAR
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -118,9 +112,6 @@ const changePasswordFailure = function (error) {
 const showSignUpModal = function () {
   console.log('sign Up clicked')
   $('#signUp-modal').toggleClass('hidden')
-  // setTimeout(function () {
-  //   $('#signUp-Modal').modal('hide')
-  // }, 2000)
 }
 
 const showSignInModal = function () {
@@ -131,23 +122,13 @@ const showSignInModal = function () {
 const showSignOutModal = function () {
   console.log('sign out clicked')
   $('#signOut-modal').toggleClass('hidden')
-  // setTimeout(function () {
-  //   $('#signOut-Modal').modal('hide')
-  // }, 2000)
 }
 
 const showChangePasswordModal = function () {
   console.log('password changed')
   $('#changePassword-modal').toggleClass('hidden')
-  // setTimeout(function () {
-  //   $('#changePassword-Modal').modal('hide')
-  // }, 2000)
 }
 
-// const showGetCreaturesSuccessModal = function () {
-//   console.log('got all creatures')
-//   $('#gotCreatures-modal').toggleClass('hidden')
-// }
 // ~~~~~~~~~~~~~~~~~~~~~~
 // MODULE EXPORTS
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -164,7 +145,6 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
-  // showGetCreaturesSuccessModal,
-  // getAllCreaturesSuccess
+  changePasswordFailure,
+  getAllCreaturesSuccess
 }
