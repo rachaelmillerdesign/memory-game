@@ -45,11 +45,18 @@ const changePassword = function (data) {
   })
 }
 
+const getAllCreaturesAjax = function () {
+  return $.ajax({
+    url: config.apiUrl + '/creatures',
+    method: 'GET'
+  })
+}
 // ~~~~~~~~~~~~~~~~~~~~~~
 // MODULE EXPORTS
 // ~~~~~~~~~~~~~~~~~~~~~~
 
 module.exports = {
+  getAllCreaturesAjax,
   signUp,
   signIn,
   signOut,

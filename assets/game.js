@@ -1,150 +1,136 @@
-let emptyBoard = []
-let m
-let i
-let array =
-// ~~~~~~~~~~~~~~~~~~~~~
-// CREATE NEW GAME
-// ~~~~~~~~~~~~~~~~~~~~~
+let emptyBoard = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+// let currentArray = this.emptyBoard
+// let imageDatabase = []
+const cardBack = $('this.cardBack')
+let matched = []
+let notMatched = []
+let card =
 
-function emptySquares () {
-  const square = $('.square')
-  for (let m = 0; m < square.length; m++) {
-    square[m].innerHTML = ''
-    // square[m].classList.remove('unclickable')
-  }
-}
-// cards array holds all cards
-let currentBoard = document.getElementsByClassName  TODO (array of shuffled pairs)
-let cards = [...card]
-// loop to add event listeners to each card
-for (var i = 0; i < cards.length; i++){
-   cards[i].addEventListener("click", displayCard)
-}
+  // ~~~~~~~~~~~~~~~~~~~~~
+  // CREATE NEW GAME
+  // ~~~~~~~~~~~~~~~~~~~~~
 
-// ~~~~~~~~~~~~~~~~~~~~~
-// SHUFFLE CARDS (Fisher-Yates Shuffle)
-// ~~~~~~~~~~~~~~~~~~~~~
+  function clearBoard() {
+    for (var c = 0; c < currentArray.length; c++) {
+      this.currentArray('hide')
+    }
 
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+    // const getImages = function () {
+    //   $(#'getCreaturesButton').on('click', )
+    // }
+    /* ajax call will return this JSON
 
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-  return array;
-}
+    {
+      creatures: [
+        {
+          image: ...
+          common_name: ...
+        },
+        {
 
-// the 'deck' of cards in current game
-const deck = document.querySelector(".deck");
-function startGame(){
-   var shuffledCards = shuffle(cards);
-   for (var i= 0; i < shuffledCards.length; i++){
-      [].forEach.call(shuffledCards, function(item){
-         deck.appendChild(item);
-      });
-   }
-}
+        },
+        {}
+      ]
+    }
+    ajax get to url get back data
+    */
 
-TODO button.onClick = startGame();
+    let fillBoard = function() {
+      for (var x = 0; x < 18; x++) {
+        // Randomly pick one from the array of creatures
+        var randomImage = creatures[x].image
+        //try to display one image to browser html
+        //retrieve 18 randlomly put x2 grid
+        var data = [{
+          common_name: "",
+          latin_name: "",
+          description: "",
+          iucn_status: "",
+          habitat: "",
+          image: ""
+        }]
+        data.forEach(function(x) {
+            result[x.image] = result[x.image] || []
+            result[x.image].push("image")
+            console.log(result)
+            selected.push(creature.image)
+            selected.push(creature.image)
+            // Remove from creatures array so we don't re-pick
+            creatures.splice(random, 1)
+          }
+        )
+        }
+      }
 
-var flipCard = function () {
-  this.classList.toggle("show")
-  this.classList.toggle("unclickable")
-  this.classList.toggle("cardInUse")
-}
-// ~~~~~~~~~~~~~~~~~~~~~
-// MATCHING CARDS
-// ~~~~~~~~~~~~~~~~~~~~~
+    // $('.thumbnail').click(function (eve) {
+    //     $(".imageforthumbs").attr('src', $(eve.target).attr('src'));
+    // })
 
-//add opened cards to OpenedCards list and check if cards are match or not
-function cardOpen() {
-    openedCards.push(this);
-    var len = openedCards.length;
-    if(len === 2){
-        moveCounter();
-        if(openedCards[0].type === openedCards[1].type){
-            matched();
+    //
+    // let fillBoard = function () {
+    //   for (var x = 0; x < 18; x++) {
+    //     // Randomly pick one from the array of creatures
+    //     var randomImage = creatures[x].image
+    //     //try to display one image to browser html
+    //     //retrieve 18 randlomly put x2 grid
+    //     // Push 2 copies onto array
+    //     selected.push(creature)
+    //     selected.push(creature)
+    //     // Remove from creatures array so we don't re-pick
+    //     creatures.splice(random, 1)
+    //   }
+    // }
+    // ~~~~~~~~~~~~~~~~~~~~~
+    // SHUFFLE CARDS (Fisher-Yates Shuffle)
+    // ~~~~~~~~~~~~~~~~~~~~~
+    function shuffle(array) {
+      var currentIndex = array.length,
+        temporaryValue, randomIndex;
+
+      while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+      return array;
+    }
+    let flipCard = function() {
+      this.classList.toggle("show")
+    }
+    // loop to add event listeners to each card
+    for (var i = 0; i < cards.length; i++) {
+      cards[i].addEventListener("click", flipCard)
+    }
+    // ~~~~~~~~~~~~~~~~~~~~~
+    // MATCHING CARDS
+    // ~~~~~~~~~~~~~~~~~~~~~
+
+    let flippedCard = flippedCards[]
+
+    function checkForMatch() {
+      flippedCard.push(this)
+      var length = flippedCards.length;
+      if (length === 2) {
+        moveCounter()
+        if (flippedCard[0].type === flippedCard[1].type) {
+          matched()
         } else {
-            unmatched();
+          unmatched()
+          if unmatched() {
+            this.flippedCard.toggle('show')
+          }
         }
+      }
     }
-};
 
-//for when cards match
-function matched(){
-    openedCards[0].classList.add("match");
-    openedCards[1].classList.add("match");
-    openedCards[0].classList.remove("show", "open");
-    openedCards[1].classList.remove("show", "open");
-    openedCards = [];
-}
+    function disableCard
 
-//for when cards don't match
-function unmatched(){
-    openedCards[0].classList.add("unmatched");
-    openedCards[1].classList.add("unmatched");
-    disable();
-    setTimeout(function(){
-        openedCards[0].classList.remove("show", "open", "unmatched");
-        openedCards[1].classList.remove("show", "open", "unmatched");
-        enable();
-        openedCards = [];
-    },1100);
-}
+    function showMatchCard
 
-//disable cards temporarily
-function disable(){
-    Array.prototype.filter.call(cards, function(card){
-        card.classList.add('unclickable');
-    });
-}
+    function gameOver
 
-//enable cards and disable matched cards
-function enable(){
-    Array.prototype.filter.call(cards, function(card){
-        card.classList.remove('unclickable');
-        for(var i = 0; i < matchedCard.length; i++){
-            matchedCard[i].classList.add("unclickable");
-        }
-    });
-}
-// ~~~~~~~~~~~~~~~~~~~~~
-// START GAME
-// ~~~~~~~~~~~~~~~~~~~~~
-StartGame(){
-     // shuffle deck
-     cards = shuffle(cards);
-     // remove all existing classes from each card
-    for (var i = 0; i < cards.length; i++){
-        deck.innerHTML = "";
-        [].forEach.call(cards, function(item) {
-            deck.appendChild(item);
-        });
-        cards[i].classList.remove("show", "open", "match", "unclickable");
-     }
-     // reset moves
-     moves = 0;
-     counter.innerHTML = moves;
-    // reset star rating
-    for (var i= 0; i < stars.length; i++){
-        stars[i].style.color = "#FFD700";
-        stars[i].style.visibility = "visible";
-    }
-    //reset timer
-    var timer = document.querySelector(".timer");
-    timer.innerHTML = "0 mins 0 secs";
-    clearInterval(interval);
+    function newGame
 
-    // ~~~~~~~~~~~~~~~~~~~~~
-    // PLAY AGAIN
-    // ~~~~~~~~~~~~~~~~~~~~~
-    //for player to play Again
-
-function playAgain(){
-    modal.classList.remove("show");
-    startGame();
-}
+    function startGame

@@ -102,7 +102,15 @@ const changePasswordFailure = function (error) {
   $('#change-password')[0].reset()
   console.error('changePasswordFailure ran. Error is :', error)
 }
-
+const getAllCreaturesSuccess = function (data) {
+  $('#imgId').setSrc(data.image)
+  $('#getAllCreaturesSuccess').modal({
+    show: true
+  })
+  setTimeout(function () {
+    $('#getAllCreaturesSuccess').modal('hide')
+  }, 2000)
+}
 // ~~~~~~~~~~~~~~~~~~~~~~
 // NAVBAR
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -135,6 +143,11 @@ const showChangePasswordModal = function () {
   //   $('#changePassword-Modal').modal('hide')
   // }, 2000)
 }
+
+const showGetCreaturesSuccessModal = function () {
+  console.log('got all creatures')
+  $('#gotCreatures-modal').toggleClass('hidden')
+}
 // ~~~~~~~~~~~~~~~~~~~~~~
 // MODULE EXPORTS
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -151,5 +164,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  showGetCreaturesSuccessModal,
+  getAllCreaturesSuccess
 }

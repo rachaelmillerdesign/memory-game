@@ -35,7 +35,7 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 .square:hover {
   background: black;
   cursor: pointer;
-  mix-blend-mode: multiply;
+  // mix-blend-mode: multiply;
   opacity: .2;
  }
 
@@ -64,18 +64,18 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 // MODALS
 // ~~~~~~~~~~~~~~~~~~~~~
 /* The Modal (background) */
-.modal {
-  background-color: rgba(0,0,0,0.4);
-  // float: right;
-  height: 100%;
-  overflow: auto;
-  padding-top: 15vw;
-  position: fixed;
-    // left: 50%;
-    // top: 25%;
-  width: 100%;
-  z-index: 1;
-}
+// .modal {
+//   background-color: rgba(0,0,0,0.4);
+//   // float: right;
+//   height: 100%;
+//   overflow: auto;
+//   padding-top: 15vw;
+//   position: fixed;
+//     // left: 50%;
+//     // top: 25%;
+//   width: 100%;
+//   z-index: 1;
+// }
 
 .button {
   background-color: white;

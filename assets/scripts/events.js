@@ -47,11 +47,19 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
+const getAllCreatures = function (event) {
+  event.preventDefault()
+  api.getAllCreaturesAjax()
+    .then(ui.getAllCreaturesSuccess)
+  console.log('index()')
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~
 // HANDLERS
 // ~~~~~~~~~~~~~~~~~~~~~~
 const addHandlers = () => {
   console.log("in handler 'click'")
+  $('#getCreaturesButton').on('click', getAllCreatures)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#sign-out').on('submit', onSignOut)
