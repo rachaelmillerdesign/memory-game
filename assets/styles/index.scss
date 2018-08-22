@@ -32,18 +32,15 @@ li {
 
 img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 
-.square:hover {
-  background: black;
-  cursor: pointer;
-  // mix-blend-mode: multiply;
-  opacity: .2;
- }
-
 // ~~~~~~~~~~~~~~~~~~~~~
 // HIDE FORMS UNLESS SIGNED IN / SIGNED UP
 // ~~~~~~~~~~~~~~~~~~~~~
 
 .hidden {
+  display: none;
+}
+
+.close {
   display: none;
 }
 
@@ -98,7 +95,7 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   padding: 2vw;
 }
 
-.close-fail {
+.close-button {
   border: none;
   color: #f98900;
   // float: right;
@@ -156,7 +153,7 @@ button:active {
 //   margin: 0 auto;
 // }
 //
-.square {
+.cardBack {
   display: inline-block;
   // float: left;
   // object-fit: scale-down;
@@ -166,7 +163,7 @@ img {
   max-width: object-fit;
 }
 
-.square:hover {
+.cardBack:hover {
   background: black;
   cursor: pointer;
   mix-blend-mode: multiply;

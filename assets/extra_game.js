@@ -1,9 +1,9 @@
 
-// function emptySquares () {
-//   const square = $('.square')
-//   for (let m = 0; m < square.length; m++) {
-//     square[m].innerHTML = ''
-//     // square[m].classList.remove('unclickable')
+// function emptyfronts () {
+//   const front = $('.front')
+//   for (let m = 0; m < front.length; m++) {
+//     front[m].innerHTML = ''
+//     // front[m].classList.remove('unclickable')
 //   }
 // }
 
