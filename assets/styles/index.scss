@@ -156,22 +156,22 @@ button:active {
 //   margin: 0 auto;
 // }
 //
-// .square {
-//   display: inline-block;
-//   // float: left;
-//   // object-fit: scale-down;
-// }
-//
-// img {
-//   max-width: object-fit;
-// }
+.square {
+  display: inline-block;
+  // float: left;
+  // object-fit: scale-down;
+}
 
-// .square:hover {
-//   background: black;
-//   cursor: pointer;
-//   mix-blend-mode: multiply;
-//   opacity: .2;
-//  }
+img {
+  max-width: object-fit;
+}
+
+.square:hover {
+  background: black;
+  cursor: pointer;
+  mix-blend-mode: multiply;
+  opacity: .2;
+ }
 
 // .row {
 //   margin-left: auto;

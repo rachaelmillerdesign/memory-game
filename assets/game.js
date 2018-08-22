@@ -6,6 +6,13 @@ let matched = []
 let notMatched = []
 let card =
 
+// ~~~~~~~~~~~~~~~~~~~~~
+// TEST RETRIEVE AND SHOW IMAGE TO 'TEST' DIV
+// ~~~~~~~~~~~~~~~~~~~~~
+GetShowImageTest = function (data){
+document.getElementById('test')
+
+}
   // ~~~~~~~~~~~~~~~~~~~~~
   // CREATE NEW GAME
   // ~~~~~~~~~~~~~~~~~~~~~
@@ -96,8 +103,10 @@ let card =
       }
       return array;
     }
+    let image =
+
     let flipCard = function() {
-      this.classList.toggle("show")
+      this.image.toggle("show")
     }
     // loop to add event listeners to each card
     for (var i = 0; i < cards.length; i++) {
