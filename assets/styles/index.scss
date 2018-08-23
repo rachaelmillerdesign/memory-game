@@ -25,8 +25,8 @@ li {
   justify-content: center;
   list-style: none;
   margin-left: 0;
-  max-height: 100%;
-  object-fit: none;
+  height: 100%;
+  object-fit: cover;
   width: 100%;
 }
 
@@ -134,13 +134,55 @@ button:active {
   display: inline-block;
 }
 
-img {
-  max-width: object-fit;
-}
-
 .cardBack:hover {
   background: black;
   cursor: pointer;
   mix-blend-mode: multiply;
   opacity: .2;
  }
+
+ // ~~~~~~~~~~~~~~~~~~~~~
+ // FLIP CARDS
+ // ~~~~~~~~~~~~~~~~~~~~~
+ /* entire container, keeps perspective */
+ // .flip-container {
+ // 	perspective: 1000px;
+ // }
+ // 	/* flip the pane when hovered */
+ // 	.flip-container:hover .flipper, .flip-container.click .flipper {
+ // 		transform: rotateY(180deg);
+ // 	}
+ //
+ // .flip-container, .front, .back {
+ // 	width: 320px;
+ // 	height: 480px;
+ // }
+ //
+ // /* flip speed goes here */
+ // .flipper {
+ // 	transition: 0.6s;
+ // 	transform-style: preserve-3d;
+ //
+ // 	position: relative;
+ // }
+ //
+ // /* hide back of pane during swap */
+ // .front, .back {
+ // 	backface-visibility: hidden;
+ //
+ // 	position: absolute;
+ // 	top: 0;
+ // 	left: 0;
+ // }
+ //
+ // /* front pane, placed above back */
+ // .front {
+ // 	z-index: 2;
+ // 	/* for firefox 31 */
+ // 	transform: rotateY(0deg);
+ // }
+ //
+ // /* back, initially hidden pane */
+ // .back {
+ // 	transform: rotateY(180deg);
+ // }

@@ -51,6 +51,7 @@ const onGetAllCreatures = function (event) {
   event.preventDefault()
   api.getAllCreaturesAjax()
     .then(ui.getAllCreaturesSuccess)
+    .then(ui.fillBoard)
   console.log('index()')
 }
 const closeModals = function () {

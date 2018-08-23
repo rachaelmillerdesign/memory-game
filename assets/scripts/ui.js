@@ -100,9 +100,26 @@ const changePasswordFailure = function (error) {
   console.error('changePasswordFailure ran. Error is :', error)
 }
 
+// const getAllCreaturesSuccess = function (data) {
+//   store.creatures = data.creatures
+//   // console.log(data.creatures)
+//   data.creatures.forEach(function (item, index, array) {
+//     // console.log(item, index)
+//     data.creatures.find(function(image) {
+//     console.log(found)<returns #31 image string name as an array of letters
+//   })
+// })
+
 const getAllCreaturesSuccess = function (data) {
   store.creatures = data.creatures
-  game.fillBoard()
+  console.log(data.creatures)
+  for (let i = 0; i < store.creatures.length; i++) {
+    console.log(store.creatures[i].image)
+    const imageArray = ['']
+    for (i = 0; i < store.creatures.length; i++)
+      forEach.push(store.creatures[i].image)
+    console.log('imageArray')
+  }
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -134,6 +151,7 @@ const showChangePasswordModal = function () {
 // ~~~~~~~~~~~~~~~~~~~~~~
 
 module.exports = {
+  // fillBoard,
   showSignUpModal,
   showSignInModal,
   showSignOutModal,
