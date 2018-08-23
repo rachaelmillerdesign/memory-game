@@ -105,7 +105,7 @@ const getAllCreaturesSuccess = function (data) {
   console.log(data.creatures)
   for (let i = 0; i < store.creatures.length; i++) {
     console.log(store.creatures[i].image)
-    $('#' + i).append('<img src= ' + store.creatures[i].image + '/>')
+    $('#' + i).attr('data-animal-image', store.creatures[i].image)
   }
 }
 

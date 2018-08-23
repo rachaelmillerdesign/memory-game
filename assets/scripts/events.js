@@ -63,22 +63,15 @@ const closeModals = function () {
 // ~~~~~~~~~~~~~~~~~~~~~~
 // FLIP CARDS CSS
 // ~~~~~~~~~~~~~~~~~~~~~~
-const alternateFlip = function (current) {
-  console.log('img clicked')
-  if (current === $('img.cardBack')) {
-    $('img.cardBack').addClass('hidden')
-    $('img.cardFront').toggleClass('hidden')
-  // } else {
-  //   current = $('img.cardFront')
-  //   $('img.cardFront').
+const hideBack = function (e) {
+  const newSrc = $(e.target).attr('data-animal-image')
+  $(e.target).attr('src', newSrc)
+  const showBack = function (e) {
+    if ($(e.target).attr('newSrc')) {
+      $(e.target).attr('src')
+    }
   }
 }
-
-// const image = document.getElementsByClassName('img')
-// const images = [...('img')]
-// for (let i = 0; i < images.length; i++) {
-//   $('image[i]').on('click', alternateFlip)
-// }
 
 // ~~~~~~~~~~~~~~~~~~~~~~
 // HANDLERS
@@ -86,7 +79,7 @@ const alternateFlip = function (current) {
 const addHandlers = () => {
   console.log("in handler 'click'")
   $('#closeButton').on('click', closeModals)
-  $('img').on('click', alternateFlip)
+  $('img').on('click', hideBack)
   $('#getCreaturesButton').on('click', onGetAllCreatures)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
