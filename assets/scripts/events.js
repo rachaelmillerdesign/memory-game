@@ -59,12 +59,34 @@ const closeModals = function () {
     $('#modal').toggleClass('hidden')
   )
 }
+
+// ~~~~~~~~~~~~~~~~~~~~~~
+// FLIP CARDS CSS
+// ~~~~~~~~~~~~~~~~~~~~~~
+const alternateFlip = function (current) {
+  console.log('img clicked')
+  if (current === $('img.cardBack')) {
+    $('img.cardBack').addClass('hidden')
+    $('img.cardFront').toggleClass('hidden')
+  // } else {
+  //   current = $('img.cardFront')
+  //   $('img.cardFront').
+  }
+}
+
+// const image = document.getElementsByClassName('img')
+// const images = [...('img')]
+// for (let i = 0; i < images.length; i++) {
+//   $('image[i]').on('click', alternateFlip)
+// }
+
 // ~~~~~~~~~~~~~~~~~~~~~~
 // HANDLERS
 // ~~~~~~~~~~~~~~~~~~~~~~
 const addHandlers = () => {
   console.log("in handler 'click'")
   $('#closeButton').on('click', closeModals)
+  $('img').on('click', alternateFlip)
   $('#getCreaturesButton').on('click', onGetAllCreatures)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)

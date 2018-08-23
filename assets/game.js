@@ -77,14 +77,25 @@
 //     }
 //   }
 // }
-// ~~~~~~~~~~~~~~~~~~~~~~
-// FLIP CARDS CSS
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
+
+// const alternateFlip = function (current) {
+//   if (current === $('.cardBack')) {
+//     current = $('.cardFront')
+//     current = 'o'
+//   } else {
+//     current = 'x'
+//   }
+//   return current
+// }
+
+// let flip = function () {
+//   $('.cardBack').on('click', flip)
+// }
+
 // .flip-container.hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
 // transform: rotateY(180deg);
 // }
-// $('#cardBack').onclick(flip())
+
 // ~~~~~~~~~~~~~~~~~~~~~~
 // MODULE EXPORTS
 // ~~~~~~~~~~~~~~~~~~~~~~

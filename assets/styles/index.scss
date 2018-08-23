@@ -141,9 +141,15 @@ button:active {
   opacity: .2;
  }
 
+.cardFront {
+  display: inline-block;
+  visibility: hidden;
+}
  // ~~~~~~~~~~~~~~~~~~~~~
  // FLIP CARDS
  // ~~~~~~~~~~~~~~~~~~~~~
+
+
  /* entire container, keeps perspective */
  // .flip-container {
  // 	perspective: 1000px;
