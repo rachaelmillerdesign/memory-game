@@ -44,18 +44,7 @@
 //   }
 //   return array;
 // }
-//
-// const addHandlers = () => {
-//   // loop to add event listeners to each card
-//   for (var i = 0; i < .length; i++) {
-//     cards[i].addEventListener("click", flipCard)
-//   }
-//   $('#signUpNav').on('click', ui.showSignUpModal)
-// }
-// let image =
-//   let flipCard = function() {
-//     this.cardFront.toggle("show")
-//   }
+
 // ~~~~~~~~~~~~~~~~~~~~~
 // MATCHING CARDS
 // ~~~~~~~~~~~~~~~~~~~~~

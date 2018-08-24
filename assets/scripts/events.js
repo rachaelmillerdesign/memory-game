@@ -50,7 +50,7 @@ const onChangePassword = function (event) {
 const onGetAllCreatures = function (event) {
   event.preventDefault()
   api.getAllCreaturesAjax()
-    .then(ui.getAllCreaturesSuccess)
+    .then(ui.animalArray)
     .then(ui.fillBoard)
   console.log('index()')
 }
@@ -66,11 +66,12 @@ const closeModals = function () {
 const hideBack = function (e) {
   const newSrc = $(e.target).attr('data-animal-image')
   $(e.target).attr('src', newSrc)
-  const showBack = function (e) {
-    if ($(e.target).attr('newSrc')) {
-      $(e.target).attr('src')
-    }
-  }
+  // debugger
+}
+
+const showBack = function (selector) {
+  const src = 'public/images/241_square.jpg'
+  $(selector).attr('src', src)
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~
