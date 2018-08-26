@@ -130,27 +130,59 @@ const changePasswordFailure = function (error) {
 //   }
 // }
 
-const animalArray = function (data) {
-  store.creatures = data.creatures
-  // const returnArray = []
-  console.log(data.creatures)
-  const creatures2 = Array.from(store.creatures)
-  for (let i = 0; i < 18; i++) {
-    console.log(store.creatures[i].image)
-    $('#' + i).attr('data-animal-image', store.creatures[i].image)
-    // returnArray.push(store.creatures[i].image)
-    // debugger
-  }
+// // ~~~~~~~~~~~~~~~~~~~~~
+// // SHUFFLE CARDS (Fisher-Yates Shuffle)
+// // ~~~~~~~~~~~~~~~~~~~~~
+function shuffle(array) {
+  let currentIndex = array.length
+  let temporaryValue, randomIndex
 
-  for (let i = 0; i < 18; i++) {
-    console.log(creatures2[i].image)
-    $('#' + (i + 18)).attr('data-animal-image', creatures2[i].image)
-    // returnArray.push(store.creatures[i].image)
-    // debugger
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex -= 1
+    temporaryValue = array[currentIndex]
+    array[currentIndex] = array[randomIndex]
+    array[randomIndex] = temporaryValue
   }
-  // return returnArray
+  return array
 }
 
+const animalArray = function (data) {
+  store.creatures = data.creatures
+  console.log(data.creatures)
+  const creatures2 = Array.from(store.creatures)
+  const creatures3 = []
+  let currentImage
+  console.log('hello')
+  for (let i = 0; i < 18; i++) {
+    const randomIndex = Math.floor(Math.random() * (creatures2.length))
+    // currentImage = creatures2[randomIndex]
+    console.log(randomIndex + 'out of' + creatures2.length)
+    currentImage = creatures2.splice(randomIndex, 1)
+    // console.log(currentImage)
+    creatures3[i] = currentImage[0]
+    creatures3[i + 18] = currentImage[0]
+  }
+
+  shuffle(creatures3)
+
+  for (let i = 0; i < 36; i++) {
+    // Set currentImage
+    $('#' + i).attr('data-animal-image', creatures3[i].image)
+    // debugger
+  }
+  // for (let i = 0; i < 18; i++) {
+  //   console.log(creatures2[i].image)
+  //   $('#' + (i + 18)).attr('data-animal-image', creatures2[i].image)
+    // returnArray.push(store.creatures[i].image)
+    // debugger
+  // }
+  // creatures2.concat(c)
+}
+
+// const randomIndex = Math.floor(Math.random() * (store.creatures.length - 1)
+// // Remove from creatures array so we don't re-pick
+//   .creatures.splice(random, 1))
 // ~~~~~~~~~~~~~~~~~~~~~~
 // NAVBAR
 // ~~~~~~~~~~~~~~~~~~~~~~
