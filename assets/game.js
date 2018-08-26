@@ -12,22 +12,7 @@
 //     this.currentArray('hide')
 //   }
 // }
-//
-// const getCreaturesRandomly = function () {
-//   // console.log(store, 'hi')
-//   const currentBoard = []
-//   for (let x = 0; x < 18; x++) {
-//     // pick a random int from 0 to 17
-//     const randomIndex = Math.floor(Math.random() * (store.creatures.length - 1)
-//     // Remove from creatures array so we don't re-pick
-//       // .creatures.splice(random, 1))
-//   }
-//
-// }
-// push 18 randonmly selected creatures to empty board, 2x each, randomly
-// .selected.push(creature.image)
-// .selected.push(creature.image)
-//
+
 // // ~~~~~~~~~~~~~~~~~~~~~
 // // SHUFFLE CARDS (Fisher-Yates Shuffle)
 // // ~~~~~~~~~~~~~~~~~~~~~

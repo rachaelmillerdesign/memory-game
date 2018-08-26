@@ -60,18 +60,40 @@ const closeModals = function () {
   )
 }
 
+let flippedCards = []
 // ~~~~~~~~~~~~~~~~~~~~~~
-// FLIP CARDS CSS
+// FLIP CARDS CSS /CHECK FOR MATCH
 // ~~~~~~~~~~~~~~~~~~~~~~
-const hideBack = function (e) {
+const showFront = function (e) {
   const newSrc = $(e.target).attr('data-animal-image')
   $(e.target).attr('src', newSrc)
-  // debugger
+  console.log('e.target: ')
+  console.log(e.target)
+  console.log($(e.target).attr('data-animal-image'))
+  flippedCards.push(e.target)
+  console.log(':' + $(flippedCards[0]).attr('data-animal-image'))
+  if (flippedCards.length === 2) {
+    if ($(flippedCards[0]).attr('data-animal-image') === $(flippedCards[1]).attr('data-animal-image')) {
+      console.log('cards match ' + $(flippedCards[0]).attr('data-animal-image') + ' ' + $(flippedCards[1]).attr('data-animal-image'))
+      match(flippedCards)
+    } else {
+      console.log('showBack ' + flippedCards[0].id + ' ' + flippedCards[1].id)
+      setTimeout(showBack, 4000, flippedCards)
+      console.log('after timeout')
+    }
+    flippedCards = []
+  }
+}
+
+const match = function (matchedCards) {
+  $(matchedCards[0]).addClass('unclickable')
+  $(matchedCards[1]).addClass('unclickable')
 }
 
 const showBack = function (selector) {
   const src = 'public/images/241_square.jpg'
-  $(selector).attr('src', src)
+  $(selector[0]).attr('src', src)
+  $(selector[1]).attr('src', src)
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -80,7 +102,7 @@ const showBack = function (selector) {
 const addHandlers = () => {
   console.log("in handler 'click'")
   $('#closeButton').on('click', closeModals)
-  $('img').on('click', hideBack)
+  $('img').on('click', showFront, ui.checkForMatch)
   $('#getCreaturesButton').on('click', onGetAllCreatures)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)

@@ -45,6 +45,14 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~
+//EVENT HANDLER
+// ~~~~~~~~~~~~~~~~~~~~~
+
+.unclickable {
+  pointer-events: none;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~
 // NAVBAR
 // ~~~~~~~~~~~~~~~~~~~~~
 .nav {
