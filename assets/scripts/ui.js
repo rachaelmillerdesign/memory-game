@@ -136,22 +136,28 @@ function shuffle (array) {
 }
 
 const animalArray = function (data) {
+  // creatures is file name in database
   store.creatures = data.creatures
   console.log(data.creatures)
+  // creatures2 is an array from store.creatures
   const creatures2 = Array.from(store.creatures)
+  //creatures3 is an empty array that creatures to gets shuffled and put into
   const creatures3 = []
   let currentImage
   for (let i = 0; i < 18; i++) {
     const randomIndex = Math.floor(Math.random() * (creatures2.length))
+    // randomly select image from randomly selected array creatures3, double and shuffle)
     currentImage = creatures2.splice(randomIndex, 1)
     creatures3[i] = currentImage[0]
     creatures3[i + 18] = currentImage[0]
   }
 
   shuffle(creatures3)
-
+  store.creaturesGameInPlay = []
+// replace placeholders with creatures3 images
   for (let i = 0; i < 36; i++) {
     $('#' + i).attr('data-animal-image', creatures3[i].image)
+    store.creaturesGameInPlay.push(creatures3[i].image)
   }
 }
 
@@ -165,6 +171,18 @@ const animalArray = function (data) {
 //   }
 //   $('showBack')
 // }
+// ~~~~~~~~~~~~~~~~~~~~~~
+// CREATE FAVORITE
+// ~~~~~~~~~~~~~~~~~~~~~~
+
+const createFavoriteSuccess = function () {
+  $('#createdFavoriteSuccess').modal({
+    show: true
+  })
+  setTimeout(function () {
+    $('#createdFavoriteSuccess').modal('hide')
+  }, 2000)
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~
 // NAVBAR
@@ -210,5 +228,6 @@ module.exports = {
   animalArray,
   locked,
   unlocked,
-  foundAllMatchesSuccess
+  foundAllMatchesSuccess,
+  createFavoriteSuccess
 }

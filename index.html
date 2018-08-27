@@ -155,13 +155,21 @@
               </button>
             </div>
 
-            <ul class='nav'>
-              <li><a id='home'>HOME</a></li>
+            <div class="modal hidden" id="createdFavoriteSuccess" tabindex="-1" role="dialog">
+              <button type="button" class="close-button" data-dismiss="modal" aria-label="Close">
+                <div class="modal-body">
+                  <h4>Added favorite!</h4>
+                </div>
+              </button>
+            </div>
+
+              <ul class='nav'>
               <li><a id='signUpNav'>SIGN UP</a></li>
               <li><a id='signInNav'>SIGN IN</a></li>
               <li><a id='signOutNav'>SIGN OUT</a></li>
               <li><a id='changePasswordNav'>CHANGE PASSWORD</a></li>
               <li><a id='getCreaturesButton'>Play!</a></li>
+              <li><a id='favorites'>MY FAVORITES</a></li>
             </ul>
 
         <!-- <h2 class='hidden'>FIND THE PAIRS</h2> -->
@@ -205,5 +213,26 @@
               <li><img id="35" class="cardBack" src="public/images/241_square.jpg"/></li>
             </ul>
           <!-- </div> -->
+          <ul class='favorites hidden'>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+            <li class='pickAFavorite hidden'></li>
+          </ul>
+          <!-- <button class='tempEndGame'>END</button> -->
     </body>
 </html>

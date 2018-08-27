@@ -3,6 +3,7 @@
 const getFormFields = require(`../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
+const store = require('./store')
 
 // ~~~~~~~~~~~~~~~~~~~~~~`
 //  FORM FIELD FUNCTIONS
@@ -77,6 +78,7 @@ const showFront = function (e) {
     setTimeout(function () { 'locked' }, 1000)
     console.log('unclickable for 1 secs')
     if ($(flippedCards[0]).attr('data-animal-image') === $(flippedCards[1]).attr('data-animal-image')) {
+      debugger
       console.log('cards match ' + $(flippedCards[0]).attr('data-animal-image') + ' ' + $(flippedCards[1]).attr('data-animal-image'))
       match(flippedCards)
     } else {
@@ -93,14 +95,31 @@ const showFront = function (e) {
 // ~~~~~~
 
 const pickAFavorite = function () {
-  $('creatures3')
   console.log($('creatures3'))
+  // $('.pickAFavorite').onClick(oncreateFavorite)
+  // show one image of each pair matched to select a favorite from
+  for (let i = 0; i < 18; i++) {
+    $('.favorites').append(`<li class='pickAFavorite'><img src='${store.creaturesGameInPlay[i]}'/></li>`)
+  }
+  $('.favorites').removeClass('hidden')
 }
+//
+// const onCreateFavorite = function () {
+//   event.preventDefault()
+//   console.log('change password ran!')
+//
+//   const data = getFormFields(this)
+//   api.changePassword(data)
+//     .then(ui.changePasswordSuccess)
+//     .catch(ui.changePasswordFailure)
+// }
+
 // ~~~~~~
 // END GAME
 // ~~~~~~
 
 const endGame = function () {
+  console.log('end game clicked')
   console.log('game over')
   pickAFavorite()
   $('#endGame').modal({
@@ -114,18 +133,15 @@ const endGame = function () {
 const match = function (matchedCards) {
   $(matchedCards[0]).addClass('unclickable')
   $(matchedCards[1]).addClass('unclickable')
-  const pushToArray = function () {
-    const matchedArray = []
-    matchedArray.push($(matchedCards[0]))
-    matchedArray.push($(matchedCards[1]))
-    console.log($(matchedCards[0]))
-    console.log($(matchedCards[1]))
-    if (matchedArray.length === 36) {
-      endGame()
-    }
+  const matchedArray = []
+  matchedArray.push($(matchedCards[0]))
+  matchedArray.push($(matchedCards[1]))
+  console.log($(matchedCards[0]))
+  console.log($(matchedCards[1]))
+  if (matchedArray.length === 2) {
+    endGame()
   }
 }
-
 const showBack = function (selector) {
   const src = 'public/images/241_square.jpg'
   $(selector[0]).attr('src', src)
@@ -148,6 +164,7 @@ const addHandlers = () => {
   $('#signInNav').on('click', ui.showSignInModal)
   $('#signOutNav').on('click', ui.showSignOutModal)
   $('#changePasswordNav').on('click', ui.showChangePasswordModal)
+  $('.tempEndGame').on('click', endGame)
 }
 
 module.exports = {
