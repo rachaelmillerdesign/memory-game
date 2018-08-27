@@ -60,10 +60,11 @@ const closeModals = function () {
   )
 }
 
-let flippedCards = []
 // ~~~~~~~~~~~~~~~~~~~~~~
 // FLIP CARDS CSS /CHECK FOR MATCH
 // ~~~~~~~~~~~~~~~~~~~~~~
+let flippedCards = []
+
 const showFront = function (e) {
   const newSrc = $(e.target).attr('data-animal-image')
   $(e.target).attr('src', newSrc)
@@ -73,21 +74,56 @@ const showFront = function (e) {
   flippedCards.push(e.target)
   console.log(':' + $(flippedCards[0]).attr('data-animal-image'))
   if (flippedCards.length === 2) {
+    setTimeout(function () { 'locked' }, 1000)
+    console.log('unclickable for 1 secs')
     if ($(flippedCards[0]).attr('data-animal-image') === $(flippedCards[1]).attr('data-animal-image')) {
       console.log('cards match ' + $(flippedCards[0]).attr('data-animal-image') + ' ' + $(flippedCards[1]).attr('data-animal-image'))
       match(flippedCards)
     } else {
       console.log('showBack ' + flippedCards[0].id + ' ' + flippedCards[1].id)
-      setTimeout(showBack, 4000, flippedCards)
+      setTimeout(showBack, 2000, flippedCards)
       console.log('after timeout')
     }
     flippedCards = []
   }
 }
 
+// ~~~~~~
+// PICK A FAVORITE
+// ~~~~~~
+
+const pickAFavorite = function () {
+  $('creatures3')
+  console.log($('creatures3'))
+}
+// ~~~~~~
+// END GAME
+// ~~~~~~
+
+const endGame = function () {
+  console.log('game over')
+  pickAFavorite()
+  $('#endGame').modal({
+    show: true
+  })
+  setTimeout(function () {
+    $('#endGame').modal('hide')
+  }, 2000)
+}
+
 const match = function (matchedCards) {
   $(matchedCards[0]).addClass('unclickable')
   $(matchedCards[1]).addClass('unclickable')
+  const pushToArray = function () {
+    const matchedArray = []
+    matchedArray.push($(matchedCards[0]))
+    matchedArray.push($(matchedCards[1]))
+    console.log($(matchedCards[0]))
+    console.log($(matchedCards[1]))
+    if (matchedArray.length === 36) {
+      endGame()
+    }
+  }
 }
 
 const showBack = function (selector) {

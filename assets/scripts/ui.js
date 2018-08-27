@@ -1,7 +1,17 @@
 'use strict'
 
 const store = require('./store')
-const game = require('../game')
+
+// ~~~~~~
+// LOCK BOARD
+// ~~~~~~
+const unlocked = function () {
+  $('img').removeClass('unclickable')
+}
+
+const locked = function () {
+  $('img').addClass('unclickable')
+}
 
 const signUpSuccess = function (data) {
   $('#signUp-modal').addClass('hidden')
@@ -39,9 +49,9 @@ const signInSuccess = function (data) {
     $('#signInSuccess').modal('hide')
   }, 2000)
   store.user = data.user
+  unlocked()
   console.log(store.user.id)
   $('#sign-in')[0].reset()
-  // $('#myId').html(`<p>${store.user.id}</p>`)
 }
 
 const signInFailure = function (error) {
@@ -63,7 +73,6 @@ const signOutSuccess = function () {
     $('#signOutSuccess').modal('hide')
   }, 2000)
   $('#sign-out')[0].reset()
-  // console.log('signOutSuccess ran and nothing was returned!')
   store.user = null
 }
 
@@ -86,7 +95,6 @@ const changePasswordSuccess = function () {
     $('#changePasswordSuccess').modal('hide')
   }, 2000)
   $('#change-password')[0].reset()
-  // console.log('changePasswordSuccess ran and nothing was returned!')
 }
 
 const changePasswordFailure = function (error) {
@@ -98,6 +106,15 @@ const changePasswordFailure = function (error) {
   }, 2000)
   $('#change-password')[0].reset()
   console.error('changePasswordFailure ran. Error is :', error)
+}
+
+const foundAllMatchesSuccess = function () {
+  $('#found all matches').modal({
+    show: true
+  })
+  setTimeout(function () {
+    $('#foundAllMatchesSuccess').modal('hide')
+  }, 2000)
 }
 
 // // ~~~~~~~~~~~~~~~~~~~~~
@@ -127,7 +144,6 @@ const animalArray = function (data) {
   for (let i = 0; i < 18; i++) {
     const randomIndex = Math.floor(Math.random() * (creatures2.length))
     currentImage = creatures2.splice(randomIndex, 1)
-    // console.log(currentImage)
     creatures3[i] = currentImage[0]
     creatures3[i + 18] = currentImage[0]
   }
@@ -138,6 +154,17 @@ const animalArray = function (data) {
     $('#' + i).attr('data-animal-image', creatures3[i].image)
   }
 }
+
+// ~~~~~
+// CREATE NEW GAME
+// ~~~~~
+
+// function startGame () {
+//   for (let c = 0; c < 36; c++) {
+//     $('#' + c).attr('data-animal-image', 0)
+//   }
+//   $('showBack')
+// }
 
 // ~~~~~~~~~~~~~~~~~~~~~~
 // NAVBAR
@@ -168,7 +195,6 @@ const showChangePasswordModal = function () {
 // ~~~~~~~~~~~~~~~~~~~~~~
 
 module.exports = {
-  // fillBoard,
   showSignUpModal,
   showSignInModal,
   showSignOutModal,
@@ -181,5 +207,8 @@ module.exports = {
   signOutFailure,
   changePasswordSuccess,
   changePasswordFailure,
-  animalArray
+  animalArray,
+  locked,
+  unlocked,
+  foundAllMatchesSuccess
 }
