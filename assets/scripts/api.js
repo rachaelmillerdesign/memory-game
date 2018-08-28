@@ -51,12 +51,26 @@ const getAllCreaturesAjax = function () {
     method: 'GET'
   })
 }
+
+const createFavoriteAjax = function (data) {
+  console.log(data, store)
+  return $.ajax({
+    url: config.apiUrl + '/favorites',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~
 // MODULE EXPORTS
 // ~~~~~~~~~~~~~~~~~~~~~~
 
 module.exports = {
   getAllCreaturesAjax,
+  createFavoriteAjax,
   signUp,
   signIn,
   signOut,

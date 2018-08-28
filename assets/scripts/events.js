@@ -98,20 +98,16 @@ const pickAFavorite = function () {
   console.log($('creatures3'))
   // $('.pickAFavorite').onClick(oncreateFavorite)
   // show one image of each pair matched to select a favorite from
-  for (let i = 0; i < 18; i++) {
+  for (let i = 0; i < 17; i++) {
     $('.favorites').append(`<li class='pickAFavorite'><img src='${store.creaturesGameInPlay[i]}'/></li>`)
   }
   $('.favorites').removeClass('hidden')
+  $('.board').addClass('hidden')
 }
-//
-// const onCreateFavorite = function () {
-//   event.preventDefault()
-//   console.log('change password ran!')
-//
-//   const data = getFormFields(this)
-//   api.changePassword(data)
-//     .then(ui.changePasswordSuccess)
-//     .catch(ui.changePasswordFailure)
+
+// const addToFavorites = function () {
+//   console.log(<img src='${store.creaturesGameInPlay[i]'/> + 'pushed to favorites')
+//   api.createFavoriteAjax()
 // }
 
 // ~~~~~~
@@ -165,6 +161,7 @@ const addHandlers = () => {
   $('#signOutNav').on('click', ui.showSignOutModal)
   $('#changePasswordNav').on('click', ui.showChangePasswordModal)
   $('.tempEndGame').on('click', endGame)
+  $('.pickAFavorite').on('click', addToFavorites)
 }
 
 module.exports = {
