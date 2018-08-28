@@ -103,12 +103,15 @@ const pickAFavorite = function () {
   }
   $('.favorites').removeClass('hidden')
   $('.board').addClass('hidden')
+  const favorite = $(event.target).attr('data-animal-image')
+  console.log('fave clicked', 'data-animal-image')
+  addToFavorites(favorite.data)
 }
 
-// const addToFavorites = function () {
-//   console.log(<img src='${store.creaturesGameInPlay[i]'/> + 'pushed to favorites')
-//   api.createFavoriteAjax()
-// }
+const addToFavorites = function () {
+  console.log('pushed to favorites')
+  api.createFavoriteAjax()
+}
 
 // ~~~~~~
 // END GAME
