@@ -78,7 +78,6 @@ const showFront = function (e) {
     setTimeout(function () { 'locked' }, 1000)
     console.log('unclickable for 1 secs')
     if ($(flippedCards[0]).attr('data-animal-image') === $(flippedCards[1]).attr('data-animal-image')) {
-      debugger
       console.log('cards match ' + $(flippedCards[0]).attr('data-animal-image') + ' ' + $(flippedCards[1]).attr('data-animal-image'))
       match(flippedCards)
     } else {
@@ -93,24 +92,28 @@ const showFront = function (e) {
 // ~~~~~~
 // PICK A FAVORITE
 // ~~~~~~
+const addToFavorites = function (data) {
+  event.preventDefault()
+  console.log('pushed to favorites')
+  api.createFavoriteAjax(data)
+    .then(console.log)
+    .catch(console.error)
+}
 
 const pickAFavorite = function () {
-  console.log($('creatures3'))
-  // $('.pickAFavorite').onClick(oncreateFavorite)
+  // $('.pickAFavorite').onClick(oncre ateFavorite)
   // show one image of each pair matched to select a favorite from
   for (let i = 0; i < 17; i++) {
-    $('.favorites').append(`<li class='pickAFavorite'><img src='${store.creaturesGameInPlay[i]}'/></li>`)
+    $('.favorites').append(`<li><img src='${store.creaturesGameInPlay[i].image}'/></li>`)
   }
   $('.favorites').removeClass('hidden')
   $('.board').addClass('hidden')
-  const favorite = $(event.target).attr('data-animal-image')
-  console.log('fave clicked', 'data-animal-image')
-  addToFavorites(favorite.data)
-}
-
-const addToFavorites = function () {
-  console.log('pushed to favorites')
-  api.createFavoriteAjax()
+  $('.favorites').bind('click', function (event) {
+    $(event.target).attr(json_encode('data-animal-image'), addToFavorites())
+  })
+  // $('.favorites').on('click', 'img', addToFavorites(event))
+  // $(`<li><img src='${store.creaturesGameInPlay.image}'/></li>`).on('click', addToFavorites)
+  // $('li').on('click', json_encode($img))
 }
 
 // ~~~~~~
@@ -121,11 +124,11 @@ const endGame = function () {
   console.log('end game clicked')
   console.log('game over')
   pickAFavorite()
-  $('#endGame').modal({
+  $('#foundAllMatchesSuccess').modal({
     show: true
   })
   setTimeout(function () {
-    $('#endGame').modal('hide')
+    $('#foundAllMatchesSuccess').modal('hide')
   }, 2000)
 }
 
@@ -164,8 +167,8 @@ const addHandlers = () => {
   $('#signOutNav').on('click', ui.showSignOutModal)
   $('#changePasswordNav').on('click', ui.showChangePasswordModal)
   $('.tempEndGame').on('click', endGame)
-  $('.pickAFavorite').on('click', addToFavorites)
 }
+// $('.pickAFavorite.img').find('.img:first').trigger('click', addToFavorites)
 
 module.exports = {
   addHandlers

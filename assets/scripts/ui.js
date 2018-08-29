@@ -148,6 +148,7 @@ const animalArray = function (data) {
     const randomIndex = Math.floor(Math.random() * (creatures2.length))
     // randomly select image from randomly selected array creatures3, double and shuffle)
     currentImage = creatures2.splice(randomIndex, 1)
+    console.log(creatures2[i])
     creatures3[i] = currentImage[0]
     console.log(creatures3[i])
     creatures3[i + 18] = currentImage[0]
@@ -158,13 +159,13 @@ const animalArray = function (data) {
   // replace placeholders with creatures3 images
   for (let i = 0; i < 36; i++) {
     $('#' + i).attr('data-animal-image', creatures3[i].image)
-    store.creaturesGameInPlay.push(creatures3[i].image)
+    store.creaturesGameInPlay.push(creatures3[i])
   }
 }
 
-// ~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~
 // CREATE NEW GAME
-// ~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~
 
 // function startGame () {
 //   for (let c = 0; c < 36; c++) {

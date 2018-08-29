@@ -53,13 +53,13 @@ const getAllCreaturesAjax = function () {
 }
 
 const createFavoriteAjax = function (data) {
-  console.log(data, store)
+  console.log('in createFavoriteAjax')
   return $.ajax({
     url: config.apiUrl + '/favorites',
     method: 'POST',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
+    // headers: {
+    //   Authorization: 'Token token=' + store.user.token
+    // },
     data
   })
 }
