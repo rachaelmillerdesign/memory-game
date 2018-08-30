@@ -92,9 +92,12 @@ const showFront = function (e) {
 // ~~~~~~
 // PICK A FAVORITE
 // ~~~~~~
-const addToFavorites = function (data) {
+const addToFavorites = function (event) {
   event.preventDefault()
-  console.log('pushed to favorites')
+  const data = {favorite: {
+    creature_id: $('data-id')
+  }}
+  console.log('pushed to favorites', data)
   api.createFavoriteAjax(data)
     .then(console.log)
     .catch(console.error)
@@ -104,18 +107,32 @@ const pickAFavorite = function () {
   // $('.pickAFavorite').onClick(oncre ateFavorite)
   // show one image of each pair matched to select a favorite from
   for (let i = 0; i < 17; i++) {
-    $('.favorites').append(`<li><img src='${store.creaturesGameInPlay[i].image}'/></li>`)
+    $('.favorites').append(`<li><img data-id='${store.creaturesGameInPlay[i].id}' src='${store.creaturesGameInPlay[i].image}'/></li>`)
+    console.log('creature is ', store.creaturesGameInPlay[i])
   }
   $('.favorites').removeClass('hidden')
   $('.board').addClass('hidden')
-  $('.favorites').bind('click', function (event) {
-    $(event.target).attr(json_encode('data-animal-image'), addToFavorites())
-  })
-  // $('.favorites').on('click', 'img', addToFavorites(event))
-  // $(`<li><img src='${store.creaturesGameInPlay.image}'/></li>`).on('click', addToFavorites)
-  // $('li').on('click', json_encode($img))
+  $('.favorites').on('click', addToFavorites)
+  // $('.favorites').bind('click', function (event) {
+  //   $(event.target).on('click', addToFavorites)
+  // })
+//   $('.favorites').on('click', 'img', addToFavorites(event))
+//   $(`<li><img src='${store.creaturesGameInPlay.image}'/></li>`).on('click', addToFavorites)
+//   $('li').on('click', json_encode($img))
+//   $(event.target).attr(JSON.stringify($(store.creaturesGameInPlay[0].image)), addToFavorites())
+//   $(event.target)(`<li><img src='${store.creaturesGameInPlay.image}'/></li>`).on('click', addToFavorites())
 }
 
+const showMyFavorites = function () {
+  for (let i = 0; i < 17; i++) {
+    $('.favorites').append(`<li><img data-id='${store.creaturesGameInPlay[i].id}' src='${store.creaturesGameInPlay[i].image}'/></li>`)
+    console.log('creature is ', store.creaturesGameInPlay[i])
+  }
+  $('.favorites').addClass('hidden')
+  $('.board').addClass('hidden')
+  $('.myFavorites').removeClass('hidden')
+  api.getMyFavoritesAjax()
+}
 // ~~~~~~
 // END GAME
 // ~~~~~~
@@ -167,6 +184,7 @@ const addHandlers = () => {
   $('#signOutNav').on('click', ui.showSignOutModal)
   $('#changePasswordNav').on('click', ui.showChangePasswordModal)
   $('.tempEndGame').on('click', endGame)
+  $('#favorites').on('click', showMyFavorites)
 }
 // $('.pickAFavorite.img').find('.img:first').trigger('click', addToFavorites)
 

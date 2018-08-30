@@ -64,6 +64,17 @@ const createFavoriteAjax = function (data) {
   })
 }
 
+const getMyFavoritesAjax = function (data) {
+  console.log('in getFavoriteAjax and the data is', data)
+  return $.ajax({
+    url: config.apiUrl + '/favorites',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
 // ~~~~~~~~~~~~~~~~~~~~~~
 // MODULE EXPORTS
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -74,5 +85,6 @@ module.exports = {
   signUp,
   signIn,
   signOut,
-  changePassword
+  changePassword,
+  getMyFavoritesAjax
 }
