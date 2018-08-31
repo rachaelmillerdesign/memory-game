@@ -4,6 +4,7 @@ const getFormFields = require(`../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 const store = require('./store')
+const config = require('../scripts/config.js')
 
 // ~~~~~~~~~~~~~~~~~~~~~~`
 //  FORM FIELD FUNCTIONS
@@ -89,22 +90,14 @@ const showFront = function (e) {
   }
 }
 
-// ~~~~~~
-// PICK A FAVORITE
-// ~~~~~~
-const addToFavorites = function (event) {
-  event.preventDefault()
-  const data = {favorite: {
-    creature_id: $('data-id')
-  }}
-  console.log('pushed to favorites', data)
-  api.createFavoriteAjax(data)
-    .then(console.log)
-    .catch(console.error)
-}
+// ~~~~~~~~~~~~~~~~~~~~~~
+// FAVORITES
+// ~~~~~~~~~~~~~~~~~~~~~~
 
+// creates the board from one of each pf 18 pairs from game played
 const pickAFavorite = function () {
-  // $('.pickAFavorite').onClick(oncre ateFavorite)
+  // $('.pickAFavorite').onClick(oncreateFavorite)
+
   // show one image of each pair matched to select a favorite from
   for (let i = 0; i < 17; i++) {
     $('.favorites').append(`<li><img data-id='${store.creaturesGameInPlay[i].id}' src='${store.creaturesGameInPlay[i].image}'/></li>`)
@@ -122,17 +115,42 @@ const pickAFavorite = function () {
 //   $(event.target).attr(JSON.stringify($(store.creaturesGameInPlay[0].image)), addToFavorites())
 //   $(event.target)(`<li><img src='${store.creaturesGameInPlay.image}'/></li>`).on('click', addToFavorites())
 }
+// on click of 'my favorites', show all creatures a user has selected by playing games
+// const showMyFavorites = function (data) {
+//   console.log(data)
+//   debugger
+//   const myFavoritesArray = Array.from(config.apiUrl + '/favorites')
+  // store.favorites = data.favorites
+  // const myFavoritesArray = Array.from(store.favorites)
+  // for (let i = 0; i < myFavoritesArray.length; i++) {
+  //   $('.favorites').append(`<li><img src='${store.myFavoritesArray[i].image}'/></li>`)
+    // console.log('creature is ', store.creaturesGameInPlay[i])
+  // }
+//   $('.favorites').addClass('hidden')
+//   $('.board').addClass('hidden')
+//   $('.myFavorites').removeClass('hidden')
+//   api.getMyFavoritesAjax()
+// }
 
-const showMyFavorites = function () {
-  for (let i = 0; i < 17; i++) {
-    $('.favorites').append(`<li><img data-id='${store.creaturesGameInPlay[i].id}' src='${store.creaturesGameInPlay[i].image}'/></li>`)
-    console.log('creature is ', store.creaturesGameInPlay[i])
-  }
-  $('.favorites').addClass('hidden')
-  $('.board').addClass('hidden')
-  $('.myFavorites').removeClass('hidden')
-  api.getMyFavoritesAjax()
+// make array
+// const myFavoritesArray = []
+// const makeMyFavoritesArray = function (data) {
+//   // creatures is file name in database
+// }
+
+const addToFavorites = function (event) {
+  event.preventDefault()
+  // debugger
+  // format expected by backend:
+  const data = {favorite: {
+    creature_id: $(this).attr('data-id')
+  }}
+  console.log('pushed to favorites', data)
+  api.createFavoriteAjax(data)
+    .then(console.log)
+    .catch(console.error)
 }
+
 // ~~~~~~
 // END GAME
 // ~~~~~~
@@ -184,7 +202,9 @@ const addHandlers = () => {
   $('#signOutNav').on('click', ui.showSignOutModal)
   $('#changePasswordNav').on('click', ui.showChangePasswordModal)
   $('.tempEndGame').on('click', endGame)
-  $('#favorites').on('click', showMyFavorites)
+  // $('#favorites').on('click', makeMyFavoritesArray)
+  $('.favorites').on('click', 'img', addToFavorites)
+  $('.get-my-favorites-button').on('click', api.getMyFavoritesAjax)
 }
 // $('.pickAFavorite.img').find('.img:first').trigger('click', addToFavorites)
 

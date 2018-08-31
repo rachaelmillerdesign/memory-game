@@ -56,25 +56,42 @@ const createFavoriteAjax = function (data) {
   console.log('in createFavoriteAjax')
   return $.ajax({
     url: config.apiUrl + '/favorites',
+    data: JSON.stringify(data),
+    contentType: 'application/json',
     method: 'POST',
-    // headers: {
-    //   Authorization: 'Token token=' + store.user.token
-    // },
-    data
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
 const getMyFavoritesAjax = function (data) {
-  console.log('in getFavoriteAjax and the data is', data)
+  // console.log('in getFavoriteAjax prebug and the data is', data)
+  // debugger
+  // console.log('in getFavoriteAjax post bug and the data is', data)
   return $.ajax({
     url: config.apiUrl + '/favorites',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data,
+    success: function (data) {
+      debugger
+      console.log('in ajax data and response is', data)
+      for (let e = 0; e < data.length; e++) {
+        const image = data.image
+        $('.favorites').append(`<li><img src='${'image'}'/></li>`)
+      }
+      $('.favorites').addClass('hidden')
+      $('.board').addClass('hidden')
+      $('.myFavorites').removeClass('hidden')
+    }
   })
 }
+
+$('#favorites').on('click', getMyFavoritesAjax)
+
 // ~~~~~~~~~~~~~~~~~~~~~~
 // MODULE EXPORTS
 // ~~~~~~~~~~~~~~~~~~~~~~
