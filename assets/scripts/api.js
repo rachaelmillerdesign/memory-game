@@ -66,9 +66,6 @@ const createFavoriteAjax = function (data) {
 }
 
 const getMyFavoritesAjax = function (data) {
-  // console.log('in getFavoriteAjax prebug and the data is', data)
-  // debugger
-  // console.log('in getFavoriteAjax post bug and the data is', data)
   return $.ajax({
     url: config.apiUrl + '/favorites',
     method: 'GET',
@@ -78,9 +75,7 @@ const getMyFavoritesAjax = function (data) {
     data,
     success: function (data) {
       console.log('in ajax data and response is', data)
-      // let creatures.data = store.creatures.data
       for (let e = 0; e < data.favorites.length; e++) {
-        // const image = $('favorites'.creatures.image(data))
         $('.myFavorites').append(`<li><img src='${data.favorites[e].creature.image}'/></li>`)
       }
       $('.favorites').addClass('hidden')

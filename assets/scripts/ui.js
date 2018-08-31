@@ -15,6 +15,9 @@ const locked = function () {
 
 const signUpSuccess = function (data) {
   $('#signUp-modal').addClass('hidden')
+  $('#signUpNav').addClass('hidden')
+  $('#signOutNav').removeClass('hidden')
+  $('#changePasswordNav').removeClass('hidden')
   $('#signUpSuccess').modal({
     show: true
   })
@@ -31,9 +34,7 @@ const signUpFailure = function (error) {
     show: true
   })
   setTimeout(function () {
-    $('#signUpFailure').modal({
-      show: false
-    })
+    $('#signUpFailure').modal('hide')
   }, 2000)
   $('#sign-up')[0].reset()
   console.error('signUpFailure ran. Error is :', error)
@@ -41,6 +42,12 @@ const signUpFailure = function (error) {
 
 const signInSuccess = function (data) {
   $('#signIn-modal').addClass('hidden')
+  $('#signInNav').addClass('hidden')
+  $('#signUpNav').addClass('hidden')
+  $('#signOutNav').removeClass('hidden')
+  $('#changePasswordNav').removeClass('hidden')
+  $('#favorites').removeClass('hidden')
+  $('#play').removeClass('hidden')
   console.log('signInSuccess ran. Data is :', data)
   $('#signInSuccess').modal({
     show: true
@@ -66,6 +73,12 @@ const signInFailure = function (error) {
 }
 
 const signOutSuccess = function () {
+  $('#signInNav').removeClass('hidden')
+  $('#signUpNav').removeClass('hidden')
+  $('#signOutNav').addClass('hidden')
+  $('#changePasswordNav').addClass('hidden')
+  $('#favorites').addClass('hidden')
+  $('#play').addClass('hidden')
   $('#signOutSuccess').modal({
     show: true
   })
