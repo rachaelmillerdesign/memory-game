@@ -77,11 +77,11 @@ const getMyFavoritesAjax = function (data) {
     },
     data,
     success: function (data) {
-      debugger
       console.log('in ajax data and response is', data)
-      for (let e = 0; e < data.length; e++) {
-        const image = data.image
-        $('.favorites').append(`<li><img src='${'image'}'/></li>`)
+      // let creatures.data = store.creatures.data
+      for (let e = 0; e < data.favorites.length; e++) {
+        // const image = $('favorites'.creatures.image(data))
+        $('.myFavorites').append(`<li><img src='${data.favorites[e].creature.image}'/></li>`)
       }
       $('.favorites').addClass('hidden')
       $('.board').addClass('hidden')
