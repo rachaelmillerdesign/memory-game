@@ -45,6 +45,10 @@ const changePassword = function (data) {
   })
 }
 
+// ~~~~~~~~~~~~~~~~~~~~
+//  GET CREATURES AND CREATE FAVORITES API
+// ~~~~~~~~~~~~~~~~~~~~
+
 const getAllCreaturesAjax = function () {
   return $.ajax({
     url: config.apiUrl + '/creatures',
@@ -85,7 +89,9 @@ const getMyFavoritesAjax = function (data) {
   })
 }
 
-$('#favorites').on('click', getMyFavoritesAjax)
+const addHandlers = () => {
+  $('#favorites').on('click', getMyFavoritesAjax)
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~
 // MODULE EXPORTS
@@ -98,5 +104,6 @@ module.exports = {
   signIn,
   signOut,
   changePassword,
-  getMyFavoritesAjax
+  getMyFavoritesAjax,
+  addHandlers
 }

@@ -52,6 +52,13 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   pointer-events: none;
 }
 
+// .locked {
+//
+// }
+//
+// .unlocked {
+//
+// }
 // ~~~~~~~~~~~~~~~~~~~~~
 // NAVBAR
 // ~~~~~~~~~~~~~~~~~~~~~
@@ -69,39 +76,43 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 // MODALS
 // ~~~~~~~~~~~~~~~~~~~~~
 /* The Modal (background) */
-// .modal {
-//   background-color: rgba(0,0,0,0.4);
-//   // float: right;
-//   height: 100%;
-//   overflow: auto;
-//   padding-top: 15vw;
-//   position: fixed;
-//     // left: 50%;
-//     // top: 25%;
-//   width: 100%;
-//   z-index: 1;
-// }
-
-.button {
-  background-color: white;
+.modal {
+  background-color: rgba(0,0,0,0.3);
   // float: right;
-  outline: none;
-  // margin: 0 auto;
-  // height: 30%;
-  // width: 50%;
+  height: 100%;
+  overflow: auto;
+  padding-top: 5vw;
+  position: fixed;
+    // left: 50%;
+    // top: 25%;
+  width: 100%;
   z-index: 1;
 }
 
+.button {
+  background-color: white;
+  float: left;
+  outline: none;
+    position: absolute;
+      left: 50%;
+      top: 25%;
+  margin: 0 auto;
+  // height: 30%;
+  // width: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%)
+}
+
 /* The Close Button */
-// .close {
-//   border: none;
-//   color: #9ece00;
-//   // float: right;
-//   font-size: 1.4rem;
-//   font-weight: 300;
-//   outline: none;
-//   padding: 2vw;
-// }
+.close {
+  border: none;
+  color: #9ece00;
+  float: right;
+  font-size: 1.4rem;
+  font-weight: 300;
+  outline: none;
+  padding: 2vw;
+}
 
 .close-button {
   border: none;
@@ -112,7 +123,7 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   font-weight: 300;
   margin: 0 auto;
   outline: none;
-  // padding: 5px;
+  padding: 5px;
   position: fixed;
     left: 50%;
     top: 25%;
