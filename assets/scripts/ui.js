@@ -62,6 +62,7 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function (error) {
+  $('#sign-in').addClass('hidden')
   $('#signInFailure').modal({
     show: true
   })
@@ -79,6 +80,7 @@ const signOutSuccess = function () {
   $('#changePasswordNav').addClass('hidden')
   $('#favorites').addClass('hidden')
   $('#play').addClass('hidden')
+  $('#sign-out').addClass('hidden')
   $('#signOutSuccess').modal({
     show: true
   })
@@ -90,6 +92,7 @@ const signOutSuccess = function () {
 }
 
 const signOutFailure = function (error) {
+  $('#sign-out').addClass('hidden')
   $('#signOutFailure').modal({
     show: true
   })
@@ -101,6 +104,7 @@ const signOutFailure = function (error) {
 }
 
 const changePasswordSuccess = function () {
+  $('#change-password').addClass('hidden')
   $('#changePasswordSuccess').modal({
     show: true
   })
@@ -111,6 +115,7 @@ const changePasswordSuccess = function () {
 }
 
 const changePasswordFailure = function (error) {
+  $('#change-password').addClass('hidden')
   $('#changePasswordFailure').modal({
     show: true
   })

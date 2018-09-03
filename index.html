@@ -7,11 +7,12 @@
 
   <!-- Do not add `link` tags-->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"
   <!-- Do not add `script` tags-->
   <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
   <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
   <style>
+  body {font-family: "Josefin Sans", 'sans-serif';}
     /* .container {
           display: grid;
           grid-template: repeat(3, 1fr) / repeat(3, 1fr);
@@ -71,20 +72,20 @@
 
   <div class="modal hidden" id=changePassword-modal role="dialog">
     <div class="modal-overlay"></div>
-      <form id="change-password" class="hidden border">
-        <fieldset>
-          <legend>Change Password!</legend>
-          <input type="password" name="passwords[old]" placeholder="Old Password">
-          <input type="password" name="passwords[new]" placeholder="New Password">
-          <input class="submit" type="submit" value="Change Password!">
-        </fieldset>
+    <form id="change-password" class="border">
+      <fieldset>
+        <legend>Change Password!</legend>
+        <input type="password" name="passwords[old]" placeholder="Old Password">
+        <input type="password" name="passwords[new]" placeholder="New Password">
+        <input class="submit" type="submit" value="Change Password!">
+      </fieldset>
       <button type="button" class="button close" data-dismiss="modal">x</button>
     </form>
   </div>
 
   <div class="modal hidden" id="signInSuccess" role="dialog">
     <div class="modal-overlay"></div>
-    <div class="modal-body">
+        <div class="modal-body">
       <h4>sign in successful!</h4>
     </div>
   </div>

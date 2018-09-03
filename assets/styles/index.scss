@@ -1,12 +1,13 @@
-body {
-  font-family: 'Josefin Sans', sans-serif;
-}
-
 h2 {
   font-size: 5vw;
   font-weight: 300;
   padding-left: 5%;
+}
 
+h4 {
+  font-family: Josefin !important;
+  font-size: 5vw;
+  font-weight: 300;
 }
 
 ul {
@@ -77,8 +78,8 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   border-style: solid;
   border-width: thick;
   padding: 5vw, 1.5vw, 2vw, 1.5vw;
-  -webkit-margin: 8em;
-  width: 500px;
+  -webkit-margin: 0;
+  // width: 500px;
   max-width: 60%; /* Could be more or less, depending on screen size */
   z-index: 100;
   left: 50%;
@@ -100,6 +101,25 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   z-index: 1; /* Sit on top */
 }
 
+.modal-body {
+  display: block;
+  position: fixed;
+  background-color: white;
+  border: #c7f22e;
+  border-style: solid;
+  border-width: thick;
+  padding: 5px;
+  font-family: Josefin;
+  font-size: 5vw;
+  font-weight: 400;
+  max-width: 60%; /* Could be more or less, depending on screen size */
+  z-index: 100;
+  left: 50%;
+  top: 20%;
+  /* Use this for centering if unknown width/height */
+  transform: translate(-50%, -50%);
+}
+
 /* The Close Button (x) */
 .close {
   color: #aaa;
@@ -108,7 +128,7 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   font-weight: 400;
   float: right;
   padding: .5vw;
-  margin-right: 5vw;
+  margin-right: 3vw;
   color: #a7db23;
   border: none;
 }
