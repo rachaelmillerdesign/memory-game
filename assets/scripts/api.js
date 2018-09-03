@@ -89,9 +89,7 @@ const getMyFavoritesAjax = function (data) {
   })
 }
 
-const addHandlers = () => {
-  $('#favorites').on('click', getMyFavoritesAjax)
-}
+$('#favorites').on('click', getMyFavoritesAjax)
 
 // ~~~~~~~~~~~~~~~~~~~~~~
 // MODULE EXPORTS
@@ -104,6 +102,5 @@ module.exports = {
   signIn,
   signOut,
   changePassword,
-  getMyFavoritesAjax,
-  addHandlers
+  getMyFavoritesAjax
 }

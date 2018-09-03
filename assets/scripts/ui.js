@@ -223,6 +223,11 @@ const showChangePasswordModal = function () {
   $('#changePassword-modal').toggleClass('hidden')
 }
 
+const hideModal = function () {
+  console.log('close button clicked')
+  $('.modal').addClass('hidden')
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~
 // MODULE EXPORTS
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -232,6 +237,7 @@ module.exports = {
   showSignInModal,
   showSignOutModal,
   showChangePasswordModal,
+  hideModal,
   signUpSuccess,
   signUpFailure,
   signInSuccess,

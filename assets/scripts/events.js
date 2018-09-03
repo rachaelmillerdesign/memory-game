@@ -56,11 +56,11 @@ const onGetAllCreatures = function (event) {
   console.log('index()')
 }
 
-const closeModals = function () {
-  $('#closeButton').on('click',
-    $('#modal').toggleClass('hidden')
-  )
-}
+// const closeModals = function () {
+//   $('#closeButton').on('click',
+//     $('#modal').toggleClass('hidden')
+//   )
+// }
 
 // ~~~~~~~~~~~~~~~~~~~~~~
 // FLIP CARDS CSS /CHECK FOR MATCH
@@ -159,7 +159,7 @@ const showBack = function (selector) {
 // ~~~~~~~~~~~~~~~~~~~~~~
 const addHandlers = () => {
   console.log("in handler 'click'")
-  $('#closeButton').on('click', closeModals)
+  // $('#closeButton').on('click', closeModals)
   $('img').on('click', showFront, ui.checkForMatch)
   $('#play').on('click', onGetAllCreatures)
   $('#sign-up').on('submit', onSignUp)
@@ -173,6 +173,7 @@ const addHandlers = () => {
   $('.tempEndGame').on('click', endGame)
   $('.favorites').on('click', 'img', createFavorite)
   $('.get-my-favorites-button').on('click', api.getMyFavoritesAjax)
+  $('.close').on('click', ui.hideModal)
 }
 
 module.exports = {
