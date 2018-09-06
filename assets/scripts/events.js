@@ -56,16 +56,20 @@ const onGetAllCreatures = function (event) {
   console.log('index()')
 }
 
-// const closeModals = function () {
-//   $('#closeButton').on('click',
-//     $('#modal').toggleClass('hidden')
-//   )
-// }
-
 // ~~~~~~~~~~~~~~~~~~~~~~
 // FLIP CARDS CSS /CHECK FOR MATCH
 // ~~~~~~~~~~~~~~~~~~~~~~
 let flippedCards = []
+
+// $('#cardBack').on('click', function (event) {
+//   if ($('event.target').hasClass('locked')) {
+//     $('#clickPlayToPlay').removeClass('hidden')
+//     setTimeout(function () {
+//       $('#clickPlayToPlay').addClass('hidden')
+//     }, 2000)
+//   }
+// }
+// )
 
 const showFront = function (e) {
   const newSrc = $(e.target).attr('data-animal-image')
@@ -77,7 +81,7 @@ const showFront = function (e) {
   console.log(':' + $(flippedCards[0]).attr('data-animal-image'))
   if (flippedCards.length === 2) {
     setTimeout(function () { 'locked' }, 1000)
-    console.log('unclickable for 1 secs')
+    console.log('unclickable after 1 second')
     if ($(flippedCards[0]).attr('data-animal-image') === $(flippedCards[1]).attr('data-animal-image')) {
       console.log('cards match ' + $(flippedCards[0]).attr('data-animal-image') + ' ' + $(flippedCards[1]).attr('data-animal-image'))
       match(flippedCards)
@@ -128,11 +132,11 @@ const endGame = function () {
   console.log('end game clicked')
   console.log('game over')
   pickAFavorite()
-  $('#foundAllMatchesSuccess').modal({
-    show: true
-  })
+  $('#play').addClass('hidden')
+  $('#playAgain').removeClass('hidden')
+  $('#foundAllMatchesSuccess').removeClass('hidden')
   setTimeout(function () {
-    $('#foundAllMatchesSuccess').modal('hide')
+    $('#foundAllMatchesSuccess').addClass('hidden')
   }, 2000)
 }
 
@@ -174,6 +178,7 @@ const addHandlers = () => {
   $('.favorites').on('click', 'img', createFavorite)
   $('.get-my-favorites-button').on('click', api.getMyFavoritesAjax)
   $('.close').on('click', ui.hideModal)
+  $('#playAgain').on('click', ui.showGameStartedModal)
 }
 
 module.exports = {

@@ -184,13 +184,20 @@ const animalArray = function (data) {
 // ~~~~~~~~~~~~~~~~~~~~~~
 // CREATE NEW GAME
 // ~~~~~~~~~~~~~~~~~~~~~~~
+document.getElementById('play')
+$('#play').on('click', startGame)
 
-// function startGame () {
-//   for (let c = 0; c < 36; c++) {
-//     $('#' + c).attr('data-animal-image', 0)
-//   }
-//   $('showBack')
-// }
+function startGame () {
+  for (let c = 0; c < 36; c++) {
+    $('#' + c).attr('data-animal-image', 0)
+    console.log('game started')
+    $('#gameStarted').removeClass('hidden')
+    setTimeout(function () {
+      $('#gameStarted').addClass('hidden')
+    }, 2000)
+  }
+  $('showBack')
+}
 // ~~~~~~~~~~~~~~~~~~~~~~
 // CREATE FAVORITE
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -228,6 +235,14 @@ const showChangePasswordModal = function () {
   $('#changePassword-modal').toggleClass('hidden')
 }
 
+const showGameStartedModal = function () {
+  console.log('play again!')
+  $('#gameStarted').removeClass('hidden')
+  setTimeout(function () {
+    $('#gameStarted').addClass('hidden')
+  }, 1000)
+}
+
 const hideModal = function () {
   console.log('close button clicked')
   $('.modal').addClass('hidden')
@@ -242,6 +257,7 @@ module.exports = {
   showSignInModal,
   showSignOutModal,
   showChangePasswordModal,
+  showGameStartedModal,
   hideModal,
   signUpSuccess,
   signUpFailure,

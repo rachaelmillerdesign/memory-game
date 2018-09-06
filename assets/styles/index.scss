@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+* {
+  font-family: 'Josefin', sans-serif;
+}
+
 h2 {
   font-size: 5vw;
   font-weight: 300;
@@ -5,8 +11,14 @@ h2 {
 }
 
 h4 {
-  font-family: Josefin !important;
-  font-size: 5vw;
+  font-family: 'Josefin', sans-serif !important;
+  font-size: 4vw;
+  font-weight: 300;
+}
+
+p {
+  font-family: 'Josefin', sans-serif;
+  font-size: 4vw;
   font-weight: 300;
 }
 
@@ -71,13 +83,16 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 // ~~~~~~~~~~~~~~~~~~~~~
 /* Modal Content/Box */
 .border {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 5vw;
+  font-weight: 400;
   display: block;
   position: fixed;
   background-color: white;
   border: #c7f22e;
   border-style: solid;
   border-width: thick;
-  padding: 5vw, 1.5vw, 2vw, 1.5vw;
+  padding: 5vw, 2vw, 2vw, 2vw;
   -webkit-margin: 0;
   // width: 500px;
   max-width: 60%; /* Could be more or less, depending on screen size */
@@ -109,7 +124,7 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   border-style: solid;
   border-width: thick;
   padding: 5px;
-  font-family: Josefin;
+  font-family: 'Josefin', sans-serif;;
   font-size: 5vw;
   font-weight: 400;
   max-width: 60%; /* Could be more or less, depending on screen size */
@@ -143,7 +158,7 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 
 input
 textarea {
-  font-family: Josefin;
+  font-family: 'Josefin', sans-serif;;
   font-size: 6vw;
   font-weight: 400;
   text-transform: uppercase;
