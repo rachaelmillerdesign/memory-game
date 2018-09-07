@@ -15,62 +15,180 @@ ul {
   grid-template-columns: repeat(6, 1fr);
   margin: 0 auto;
   max-width: 90%;
-  padding: 0;
+  padding: 4vw 0 0;
 }
 
 li {
   align-items: center;
   display: flex;
-  font-size: calc(16px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
+  // font-size: calc(16px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
   justify-content: center;
   list-style: none;
   margin-left: 0;
-  max-height: 100%;
-  object-fit: none;
+  height: 100%;
+  object-fit: cover;
   width: 100%;
 }
+
 img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 
-/* @media all and (max-width: 800px) {
-  ul {
-    grid-gap: .24em;
-  }
+// ~~~~~~~~~~~~~~~~~~~~~
+// HIDE FORMS UNLESS SIGNED IN / SIGNED UP
+// ~~~~~~~~~~~~~~~~~~~~~
 
-  ul.weekdays li {
-    font-size: 0;
-  }
+.hidden {
+  display: none;
+}
 
-} */
+.close {
+  display: none;
+}
 
+// ~~~~~~~~~~~~~~~~~~~~~
+// NAVBAR
+// ~~~~~~~~~~~~~~~~~~~~~
+.nav {
+  color: grey;
+  font-size: 2vw;
+  font-weight: 300;
+}
 
-// .container {
-//   // display: inline-grid;
-//   grid-template-columns: repeat(6, .1fr);
-//   grid-gap: .5vw;
-//   // grid-auto-rows: minmax(50px, auto);
-//   max-width: 60%;
-//   margin: 0 auto;
+.nav li:hover {
+  background-color: aqua;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~
+// MODALS
+// ~~~~~~~~~~~~~~~~~~~~~
+/* The Modal (background) */
+// .modal {
+//   background-color: rgba(0,0,0,0.4);
+//   // float: right;
+//   height: 100%;
+//   overflow: auto;
+//   padding-top: 15vw;
+//   position: fixed;
+//     // left: 50%;
+//     // top: 25%;
+//   width: 100%;
+//   z-index: 1;
 // }
-//
-// .square {
-//   display: inline-block;
-//   // float: left;
-//   // object-fit: scale-down;
-// }
-//
-// img {
-//   max-width: object-fit;
+
+.button {
+  background-color: white;
+  // float: right;
+  outline: none;
+  // margin: 0 auto;
+  // height: 30%;
+  // width: 50%;
+  z-index: 1;
+}
+
+/* The Close Button */
+// .close {
+//   border: none;
+//   color: #9ece00;
+//   // float: right;
+//   font-size: 1.4rem;
+//   font-weight: 300;
+//   outline: none;
+//   padding: 2vw;
 // }
 
-// .square:hover {
-//   background: black;
-//   cursor: pointer;
-//   mix-blend-mode: multiply;
-//   opacity: .2;
-//  }
+.close-button {
+  border: none;
+  color: #f98900;
+  // float: right;
+  // font-size: 24px;
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin: 0 auto;
+  outline: none;
+  // padding: 5px;
+  position: fixed;
+    left: 50%;
+    top: 25%;
+  // transform: translate(-50%, -50%);
+}
 
-// .row {
-//   margin-left: auto;
-//   margin-right: auto;
-//   width: 80%;
-// }
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button:active {
+  border-style: none;
+  border-color: none;
+}
+
+:focus {
+  outline: -webkit-focus-ring-color none;
+  outline-color: none;
+  outline-style: auto;
+  outline-width: 0;
+}
+
+.cardBack {
+  display: inline-block;
+}
+
+.cardBack:hover {
+  background: black;
+  cursor: pointer;
+  mix-blend-mode: multiply;
+  opacity: .2;
+ }
+
+.cardFront {
+  display: inline-block;
+  background-image: cover;
+}
+ // ~~~~~~~~~~~~~~~~~~~~~
+ // FLIP CARDS
+ // ~~~~~~~~~~~~~~~~~~~~~
+
+
+ /* entire container, keeps perspective */
+ // .flip-container {
+ // 	perspective: 1000px;
+ // }
+ // 	/* flip the pane when hovered */
+ // 	.flip-container:hover .flipper, .flip-container.click .flipper {
+ // 		transform: rotateY(180deg);
+ // 	}
+ //
+ // .flip-container, .front, .back {
+ // 	width: 320px;
+ // 	height: 480px;
+ // }
+ //
+ // /* flip speed goes here */
+ // .flipper {
+ // 	transition: 0.6s;
+ // 	transform-style: preserve-3d;
+ //
+ // 	position: relative;
+ // }
+ //
+ // /* hide back of pane during swap */
+ // .front, .back {
+ // 	backface-visibility: hidden;
+ //
+ // 	position: absolute;
+ // 	top: 0;
+ // 	left: 0;
+ // }
+ //
+ // /* front pane, placed above back */
+ // .front {
+ // 	z-index: 2;
+ // 	/* for firefox 31 */
+ // 	transform: rotateY(0deg);
+ // }
+ //
+ // /* back, initially hidden pane */
+ // .back {
+ // 	transform: rotateY(180deg);
+ // }
