@@ -1,10 +1,23 @@
 'use strict'
 
 const store = require('./store')
-const game = require('../game')
+
+// ~~~~~~
+// LOCK BOARD
+// ~~~~~~
+const unlocked = function () {
+  $('img').removeClass('unclickable')
+}
+
+const locked = function () {
+  $('img').addClass('unclickable')
+}
 
 const signUpSuccess = function (data) {
   $('#signUp-modal').addClass('hidden')
+  $('#signUpNav').addClass('hidden')
+  $('#signOutNav').removeClass('hidden')
+  $('#changePasswordNav').removeClass('hidden')
   $('#signUpSuccess').modal({
     show: true
   })
@@ -21,9 +34,7 @@ const signUpFailure = function (error) {
     show: true
   })
   setTimeout(function () {
-    $('#signUpFailure').modal({
-      show: false
-    })
+    $('#signUpFailure').modal('hide')
   }, 2000)
   $('#sign-up')[0].reset()
   console.error('signUpFailure ran. Error is :', error)
@@ -31,6 +42,12 @@ const signUpFailure = function (error) {
 
 const signInSuccess = function (data) {
   $('#signIn-modal').addClass('hidden')
+  $('#signInNav').addClass('hidden')
+  $('#signUpNav').addClass('hidden')
+  $('#signOutNav').removeClass('hidden')
+  $('#changePasswordNav').removeClass('hidden')
+  $('#favorites').removeClass('hidden')
+  $('#play').removeClass('hidden')
   console.log('signInSuccess ran. Data is :', data)
   $('#signInSuccess').modal({
     show: true
@@ -39,12 +56,13 @@ const signInSuccess = function (data) {
     $('#signInSuccess').modal('hide')
   }, 2000)
   store.user = data.user
+  unlocked()
   console.log(store.user.id)
   $('#sign-in')[0].reset()
-  // $('#myId').html(`<p>${store.user.id}</p>`)
 }
 
 const signInFailure = function (error) {
+  $('#sign-in').addClass('hidden')
   $('#signInFailure').modal({
     show: true
   })
@@ -56,6 +74,13 @@ const signInFailure = function (error) {
 }
 
 const signOutSuccess = function () {
+  $('#signInNav').removeClass('hidden')
+  $('#signUpNav').removeClass('hidden')
+  $('#signOutNav').addClass('hidden')
+  $('#changePasswordNav').addClass('hidden')
+  $('#favorites').addClass('hidden')
+  $('#play').addClass('hidden')
+  $('#sign-out').addClass('hidden')
   $('#signOutSuccess').modal({
     show: true
   })
@@ -63,11 +88,11 @@ const signOutSuccess = function () {
     $('#signOutSuccess').modal('hide')
   }, 2000)
   $('#sign-out')[0].reset()
-  // console.log('signOutSuccess ran and nothing was returned!')
   store.user = null
 }
 
 const signOutFailure = function (error) {
+  $('#sign-out').addClass('hidden')
   $('#signOutFailure').modal({
     show: true
   })
@@ -79,6 +104,7 @@ const signOutFailure = function (error) {
 }
 
 const changePasswordSuccess = function () {
+  $('#change-password').addClass('hidden')
   $('#changePasswordSuccess').modal({
     show: true
   })
@@ -86,10 +112,10 @@ const changePasswordSuccess = function () {
     $('#changePasswordSuccess').modal('hide')
   }, 2000)
   $('#change-password')[0].reset()
-  // console.log('changePasswordSuccess ran and nothing was returned!')
 }
 
 const changePasswordFailure = function (error) {
+  $('#change-password').addClass('hidden')
   $('#changePasswordFailure').modal({
     show: true
   })
@@ -99,56 +125,103 @@ const changePasswordFailure = function (error) {
   $('#change-password')[0].reset()
   console.error('changePasswordFailure ran. Error is :', error)
 }
-//
-// const animalArray = function (data) {
-//   store.creatures = data.creatures
-//   console.log(store.creatures)
-//   for (let i = 0; i < store.creatures.length; i++) {
-//     console.log(store.creatures[i].image)
-//     //  doubling array
-//     const animalArray1 = Array.from(store.creatures)
-//     // animalArray.push(...animalArray1)
-//     // const fullBoard = animalArray
-//     console.log('fullBoard')
-//     // iterating over array
-//     for (let i = 0; i < fullBoard.length; i++) {
-//       console.log(fullBoard[i].image)
-//       $('#' + i).attr('data-animal-image', store.creatures[i].image)
-//     }
-//   }
+
+// const foundAllMatchesSuccess = function () {
+//   $('#found all matches').modal({
+//     show: true
+//   })
+//   setTimeout(function () {
+//     $('#foundAllMatchesSuccess').modal('hide')
+//   }, 2000)
 // }
-// //
-// const animalArray = function (data) {
-//   store.creatures = data.creatures
-//   // returnArray = []
-//   console.log(data.creatures)
-//   for (let i = 0; i < 18; i++) {
-//     console.log(store.creatures[i].image)
-//     $('#' + i).attr('data-animal-image', store.creatures[i].image)
-//     // then push retrunArray.push(store.creatures[i].image)
-//     // return returnArray
-//   }
-// }
+
+// // ~~~~~~~~~~~~~~~~~~~~~
+// // SHUFFLE CARDS (Fisher-Yates Shuffle)
+// // ~~~~~~~~~~~~~~~~~~~~~
+
+function shuffle (array) {
+  let currentIndex = array.length
+  let temporaryValue, randomIndex
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex -= 1
+    temporaryValue = array[currentIndex]
+    array[currentIndex] = array[randomIndex]
+    array[randomIndex] = temporaryValue
+  }
+  return array
+}
 
 const animalArray = function (data) {
+  // creatures is file name in database
   store.creatures = data.creatures
-  // const returnArray = []
   console.log(data.creatures)
+  // creatures2 is an array from store.creatures
   const creatures2 = Array.from(store.creatures)
+  // creatures3 is an empty array that creatures to gets shuffled and put into
+  const creatures3 = []
+  let currentImage
   for (let i = 0; i < 18; i++) {
-    console.log(store.creatures[i].image)
-    $('#' + i).attr('data-animal-image', store.creatures[i].image)
-    // returnArray.push(store.creatures[i].image)
-    // debugger
+    const randomIndex = Math.floor(Math.random() * (creatures2.length))
+    // randomly select image from randomly selected array creatures3, double and shuffle)
+    currentImage = creatures2.splice(randomIndex, 1)
+    console.log(creatures2[i])
+    creatures3[i] = currentImage[0]
+    console.log(creatures3[i])
+    creatures3[i + 18] = currentImage[0]
   }
 
-  for (let i = 0; i < 18; i++) {
-    console.log(creatures2[i].image)
-    $('#' + (i + 18)).attr('data-animal-image', creatures2[i].image)
-    // returnArray.push(store.creatures[i].image)
-    // debugger
+  shuffle(creatures3)
+  store.creaturesGameInPlay = []
+  // replace placeholders with creatures3 images
+  for (let i = 0; i < 36; i++) {
+    $('#' + i).attr('data-animal-image', creatures3[i].image)
+    store.creaturesGameInPlay.push(creatures3[i])
   }
-  // return returnArray
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~
+// CREATE NEW GAME
+// ~~~~~~~~~~~~~~~~~~~~~~~
+document.getElementById('play')
+$('#play').on('click', startGame)
+
+function startGame () {
+  for (let c = 0; c < 36; c++) {
+    $('#' + c).attr('data-animal-image', 0)
+    console.log('game started')
+    $('#gameStarted').removeClass('hidden')
+    setTimeout(function () {
+      $('#gameStarted').addClass('hidden')
+    }, 2000)
+  }
+}
+
+document.getElementById('playAgain')
+$('#playAgain').on('click', newGame)
+
+function newGame () {
+  $('.favorites').addClass('hidden')
+  $('.board').removeClass('hidden')
+  $('.myFavorites').addClass('hidden')
+  for (let c = 0; c < 36; c++) {
+    $('.cardBack').attr('src', 'public/images/241_square.jpg')
+  }
+  startGame()
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~
+// CREATE FAVORITE
+// ~~~~~~~~~~~~~~~~~~~~~~
+
+const createFavoriteSuccess = function () {
+  $('#createdFavoriteSuccess').modal({
+    show: true
+  })
+  setTimeout(function () {
+    $('#createdFavoriteSuccess').modal('hide')
+  }, 2000)
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -175,16 +248,30 @@ const showChangePasswordModal = function () {
   $('#changePassword-modal').toggleClass('hidden')
 }
 
+const showGameStartedModal = function () {
+  console.log('play again!')
+  $('#gameStarted').removeClass('hidden')
+  setTimeout(function () {
+    $('#gameStarted').addClass('hidden')
+  }, 1000)
+}
+
+const hideModal = function () {
+  console.log('close button clicked')
+  $('.modal').addClass('hidden')
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~
 // MODULE EXPORTS
 // ~~~~~~~~~~~~~~~~~~~~~~
 
 module.exports = {
-  // fillBoard,
   showSignUpModal,
   showSignInModal,
   showSignOutModal,
   showChangePasswordModal,
+  showGameStartedModal,
+  hideModal,
   signUpSuccess,
   signUpFailure,
   signInSuccess,
@@ -193,5 +280,8 @@ module.exports = {
   signOutFailure,
   changePasswordSuccess,
   changePasswordFailure,
-  animalArray
+  animalArray,
+  locked,
+  unlocked,
+  createFavoriteSuccess
 }

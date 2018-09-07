@@ -1,12 +1,25 @@
-body {
-  font-family: 'Josefin Sans', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+* {
+  font-family: 'Josefin', sans-serif;
 }
 
 h2 {
   font-size: 5vw;
   font-weight: 300;
   padding-left: 5%;
+}
 
+h4 {
+  font-family: 'Josefin', sans-serif !important;
+  font-size: 4vw;
+  font-weight: 300;
+}
+
+p {
+  font-family: 'Josefin', sans-serif;
+  font-size: 4vw;
+  font-weight: 300;
 }
 
 ul {
@@ -15,7 +28,7 @@ ul {
   grid-template-columns: repeat(6, 1fr);
   margin: 0 auto;
   max-width: 90%;
-  padding: 4vw 0 0;
+  padding: 1vw 0 0;
 }
 
 li {
@@ -40,8 +53,12 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   display: none;
 }
 
-.close {
-  display: none;
+// ~~~~~~~~~~~~~~~~~~~~~
+//EVENT HANDLER
+// ~~~~~~~~~~~~~~~~~~~~~
+
+.unclickable {
+  pointer-events: none;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~
@@ -50,105 +67,135 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 .nav {
   color: grey;
   font-size: 2vw;
-  font-weight: 300;
+  font-weight: 400;
+  padding: 2vw;
 }
 
 .nav li:hover {
-  background-color: aqua;
+  // background-color: aqua;
+  // padding: .5vw 0;
+  font-weight: 500;
+  color: black;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~
 // MODALS
 // ~~~~~~~~~~~~~~~~~~~~~
-/* The Modal (background) */
-// .modal {
-//   background-color: rgba(0,0,0,0.4);
-//   // float: right;
-//   height: 100%;
-//   overflow: auto;
-//   padding-top: 15vw;
-//   position: fixed;
-//     // left: 50%;
-//     // top: 25%;
-//   width: 100%;
-//   z-index: 1;
-// }
-
-.button {
+/* Modal Content/Box */
+.border {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 3vw;
+  font-weight: 400;
+  display: block;
+  position: fixed;
   background-color: white;
-  // float: right;
-  outline: none;
-  // margin: 0 auto;
-  // height: 30%;
-  // width: 50%;
-  z-index: 1;
+  border: #c7f22e;
+  border-style: solid;
+  border-width: thick;
+  padding: 5vw, 2vw, 2vw, 2vw;
+  -webkit-margin: 0;
+  // width: 500px;
+  max-width: 60%; /* Could be more or less, depending on screen size */
+  z-index: 100;
+  left: 50%;
+  top: 20%;
+  /* Use this for centering if unknown width/height */
+  transform: translate(-50%, -50%);
 }
 
-/* The Close Button */
-// .close {
-//   border: none;
-//   color: #9ece00;
-//   // float: right;
-//   font-size: 1.4rem;
-//   font-weight: 300;
-//   outline: none;
-//   padding: 2vw;
-// }
+/* The Modal (background) */
+.modal-overlay {
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  z-index: 1; /* Sit on top */
+}
 
-.close-button {
-  border: none;
-  color: #f98900;
-  // float: right;
-  // font-size: 24px;
-  font-size: 1.4rem;
-  font-weight: 300;
-  margin: 0 auto;
-  outline: none;
-  // padding: 5px;
+.modal-body {
+  display: block;
   position: fixed;
-    left: 50%;
-    top: 25%;
-  // transform: translate(-50%, -50%);
+  background-color: white;
+  border: #c7f22e;
+  border-style: solid;
+  border-width: thick;
+  padding: 5px;
+  font-family: 'Josefin', sans-serif;;
+  font-size: 5vw;
+  font-weight: 400;
+  max-width: 60%; /* Could be more or less, depending on screen size */
+  z-index: 100;
+  left: 50%;
+  top: 20%;
+  /* Use this for centering if unknown width/height */
+  transform: translate(-50%, -50%);
+}
+
+/* The Close Button (x) */
+.close {
+  color: #aaa;
+  // float: right;
+  font-size: 6vw;
+  font-weight: 400;
+  float: right;
+  padding: .5vw;
+  margin-right: 3vw;
+  color: #a7db23;
+  border: none;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: #70726a;
   text-decoration: none;
   cursor: pointer;
+  border: 0;
 }
 
-button:active {
-  border-style: none;
-  border-color: none;
+input
+textarea {
+  font-family: 'Josefin', sans-serif;;
+  font-size: 6vw;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 1vw;
+  margin: .5vw;
+  box-sizing: border-box;
 }
 
-:focus {
-  outline: -webkit-focus-ring-color none;
-  outline-color: none;
-  outline-style: auto;
-  outline-width: 0;
+.submit {
+  background-color: #c7f22e;
 }
 
-.cardBack {
-  display: inline-block;
+// ~~~~~~~~~~~~~~~~~~~~~
+// CODE TO RESET AGENT STYLESHEET
+// ~~~~~~~~~~~~~~~~~~~~~
+legend {
+  padding: 0;
+  margin: 5px;
+  display: table;
+  font-size: 4vw;
+  font-weight: 300;
+  -webkit-padding-before: 20px;
+  -webkit-padding-start: 5px;
 }
 
-.cardBack:hover {
-  background: black;
-  cursor: pointer;
-  mix-blend-mode: multiply;
-  opacity: .2;
- }
-
-.cardFront {
-  display: inline-block;
-  background-image: cover;
+fieldset {
+  border: 0;
+  min-width: 0;
 }
+
+body:not(:-moz-handler-blocked) fieldset {
+  display: table-cell;
+}
+
  // ~~~~~~~~~~~~~~~~~~~~~
  // FLIP CARDS
  // ~~~~~~~~~~~~~~~~~~~~~
-
 
  /* entire container, keeps perspective */
  // .flip-container {
