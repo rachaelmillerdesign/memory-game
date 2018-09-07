@@ -52,7 +52,7 @@ const onGetAllCreatures = function (event) {
   event.preventDefault()
   api.getAllCreaturesAjax()
     .then(ui.animalArray)
-    .then(ui.fillBoard)
+    // .then(ui.fillBoard)
   console.log('index()')
 }
 
@@ -60,16 +60,6 @@ const onGetAllCreatures = function (event) {
 // FLIP CARDS CSS /CHECK FOR MATCH
 // ~~~~~~~~~~~~~~~~~~~~~~
 let flippedCards = []
-
-// $('#cardBack').on('click', function (event) {
-//   if ($('event.target').hasClass('locked')) {
-//     $('#clickPlayToPlay').removeClass('hidden')
-//     setTimeout(function () {
-//       $('#clickPlayToPlay').addClass('hidden')
-//     }, 2000)
-//   }
-// }
-// )
 
 const showFront = function (e) {
   const newSrc = $(e.target).attr('data-animal-image')
@@ -79,7 +69,7 @@ const showFront = function (e) {
   console.log($(e.target).attr('data-animal-image'))
   flippedCards.push(e.target)
   console.log(':' + $(flippedCards[0]).attr('data-animal-image'))
-  if (flippedCards.length === 2) {
+  if (flippedCards.length === 36) {
     setTimeout(function () { 'locked' }, 1000)
     console.log('unclickable after 1 second')
     if ($(flippedCards[0]).attr('data-animal-image') === $(flippedCards[1]).attr('data-animal-image')) {
@@ -137,7 +127,7 @@ const endGame = function () {
   $('#foundAllMatchesSuccess').removeClass('hidden')
   setTimeout(function () {
     $('#foundAllMatchesSuccess').addClass('hidden')
-  }, 2000)
+  }, 3500)
 }
 
 const match = function (matchedCards) {
@@ -152,6 +142,7 @@ const match = function (matchedCards) {
     endGame()
   }
 }
+
 const showBack = function (selector) {
   const src = 'public/images/241_square.jpg'
   $(selector[0]).attr('src', src)
@@ -178,7 +169,6 @@ const addHandlers = () => {
   $('.favorites').on('click', 'img', createFavorite)
   $('.get-my-favorites-button').on('click', api.getMyFavoritesAjax)
   $('.close').on('click', ui.hideModal)
-  $('#playAgain').on('click', ui.showGameStartedModal)
 }
 
 module.exports = {

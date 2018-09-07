@@ -126,14 +126,14 @@ const changePasswordFailure = function (error) {
   console.error('changePasswordFailure ran. Error is :', error)
 }
 
-const foundAllMatchesSuccess = function () {
-  $('#found all matches').modal({
-    show: true
-  })
-  setTimeout(function () {
-    $('#foundAllMatchesSuccess').modal('hide')
-  }, 2000)
-}
+// const foundAllMatchesSuccess = function () {
+//   $('#found all matches').modal({
+//     show: true
+//   })
+//   setTimeout(function () {
+//     $('#foundAllMatchesSuccess').modal('hide')
+//   }, 2000)
+// }
 
 // // ~~~~~~~~~~~~~~~~~~~~~
 // // SHUFFLE CARDS (Fisher-Yates Shuffle)
@@ -196,8 +196,21 @@ function startGame () {
       $('#gameStarted').addClass('hidden')
     }, 2000)
   }
-  $('showBack')
 }
+
+document.getElementById('playAgain')
+$('#playAgain').on('click', newGame)
+
+function newGame () {
+  $('.favorites').addClass('hidden')
+  $('.board').removeClass('hidden')
+  $('.myFavorites').addClass('hidden')
+  for (let c = 0; c < 36; c++) {
+    $('.cardBack').attr('src', 'public/images/241_square.jpg')
+  }
+  startGame()
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~
 // CREATE FAVORITE
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -270,6 +283,5 @@ module.exports = {
   animalArray,
   locked,
   unlocked,
-  foundAllMatchesSuccess,
   createFavoriteSuccess
 }
