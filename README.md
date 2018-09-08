@@ -18,7 +18,7 @@ This app required:
 
 The ERD (Entity Relationship Diagram)
 
-https://user-images.githubusercontent.com/39502188/45254555-4f0bf100-b348-11e8-8efb-a286782e6eb7.jpg
+![Imgur](https://i.imgur.com/w77i9gh.jpg)
 
 WIREFRAMES
 
