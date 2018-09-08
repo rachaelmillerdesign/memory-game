@@ -1,4 +1,4 @@
-![Imgur](https://i.imgur.com/pqNSmx9h.jpg)
+![Imgur](https://i.imgur.com/pqNSmx9b.jpg)
 NO ORDINARY WORLD MEMORY GAME
 
 As the capstone project for General Assembly's bootcamp-style, 520+ hours, Web Development Immersive, I created a memory game featuring artwork I had done of a variety of animals, mostly endangered. It is a single page, cloud-based, full-stack application.
