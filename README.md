@@ -24,7 +24,7 @@ WIREFRAMES
 
 The wireframes I sketched prior to starting coding speak to a vision I have for a website I am going to build: No Ordinary World. This memory game will be a feature of a site devoted to promoting awareness and funding for endangered species.
 
-
+![Imgur](https://i.imgur.com/drpFCfY.jpg)
 
 TECHNOLOGIES USED
 
