@@ -64,6 +64,9 @@ let flippedCards = []
 const showFront = function (e) {
   const newSrc = $(e.target).attr('data-animal-image')
   $(e.target).attr('src', newSrc)
+  // if ($(e.target).attr('data-animal-image')("clicked") === true) {
+  //  $(event.target).off()
+  //  setTimeout($(event.target).on(), 2000)
   console.log('e.target: ')
   // console.log(e.target)
   // console.log($(e.target).attr('data-animal-image'))
@@ -87,14 +90,17 @@ const showFront = function (e) {
 // ~~~~~~~~~~~~~~~~~~~~~~
 // FAVORITES
 // ~~~~~~~~~~~~~~~~~~~~~~
-
-// creates the board from one of each pf 18 pairs from game played
 const pickAFavorite = function () {
   // show one image of each pair matched to select a favorite from
-  for (let i = 0; i < 17; i++) {
-    $('.favorites').append(`<li><img data-id='${store.creaturesGameInPlay[i].id}' src='${store.creaturesGameInPlay[i].image}'/></li>`)
-    console.log('creature is ', store.creaturesGameInPlay[i])
-  }
+  // for (let i = 0; i < 36; i++) {
+  const uniqueCreature = []
+  $.each(store.creaturesGameInPlay, function (i, el) {
+    if ($.inArray(el, uniqueCreature) === -1) {
+      uniqueCreature.push(el)
+      $('.favorites').append(`<li><img data-id='${store.creaturesGameInPlay[i].id}' src='${store.creaturesGameInPlay[i].image}'/></li>`)
+      console.log('creature is ', store.creaturesGameInPlay[i])
+    }
+  })
   $('.favorites').removeClass('hidden')
   $('.board').addClass('hidden')
   $('.favorites').on('click', createFavorite)
@@ -122,16 +128,16 @@ const pickAFavorite = function () {
 
 const createFavorite = function (event) {
   event.preventDefault()
-  // debugger
   // format expected by backend:
   const data = {favorite: {
     creature_id: $(this).attr('data-id')
   }}
+  // if ($.inArray($(this).attr('data-id'), api.myFavorites) === -1) {
   console.log('pushed to favorites', data)
   api.createFavoriteAjax(data)
     .then(console.log)
     .then(ui.createFavoriteSuccess)
-    .catch(console.error)
+    .catch(ui.createFavoriteFailure)
 }
 
 // ~~~~~~

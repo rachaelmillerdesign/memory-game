@@ -130,15 +130,6 @@ const changePasswordFailure = function (error) {
   console.error('changePasswordFailure ran. Error is :', error)
 }
 
-// const foundAllMatchesSuccess = function () {
-//   $('#found all matches').modal({
-//     show: true
-//   })
-//   setTimeout(function () {
-//     $('#foundAllMatchesSuccess').modal('hide')
-//   }, 2000)
-// }
-
 // // ~~~~~~~~~~~~~~~~~~~~~
 // // SHUFFLE CARDS (Fisher-Yates Shuffle)
 // // ~~~~~~~~~~~~~~~~~~~~~
@@ -231,6 +222,14 @@ const createFavoriteSuccess = function () {
   }, 2000)
 }
 
+const createFavoriteFailure = function () {
+  $('#createdFavoriteFailure').modal({
+    show: true
+  })
+  setTimeout(function () {
+    $('#createdFavoriteFailure').modal('hide')
+  }, 2000)
+}
 // ~~~~~~~~~~~~~~~~~~~~~~
 // NAVBAR
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -291,5 +290,6 @@ module.exports = {
   locked,
   unlocked,
   createFavoriteSuccess,
+  createFavoriteFailure,
   matchedArray
 }
