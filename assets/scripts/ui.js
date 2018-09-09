@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('./store')
+// const events = require('./events')
 
 // ~~~~~~
 // LOCK BOARD
@@ -81,6 +82,9 @@ const signOutSuccess = function () {
   $('#favorites').addClass('hidden')
   $('#play').addClass('hidden')
   $('#sign-out').addClass('hidden')
+  for (let c = 0; c < 36; c++) {
+    $('.cardBack').attr('src', 'public/images/241_square.jpg')
+  }
   $('#signOutSuccess').modal({
     show: true
   })
@@ -156,7 +160,7 @@ function shuffle (array) {
 const animalArray = function (data) {
   // creatures is file name in database
   store.creatures = data.creatures
-  console.log(data.creatures)
+  // console.log(data.creatures)
   // creatures2 is an array from store.creatures
   const creatures2 = Array.from(store.creatures)
   // creatures3 is an empty array that creatures to gets shuffled and put into
@@ -166,9 +170,9 @@ const animalArray = function (data) {
     const randomIndex = Math.floor(Math.random() * (creatures2.length))
     // randomly select image from randomly selected array creatures3, double and shuffle)
     currentImage = creatures2.splice(randomIndex, 1)
-    console.log(creatures2[i])
+    // console.log(creatures2[i])
     creatures3[i] = currentImage[0]
-    console.log(creatures3[i])
+    // console.log(creatures3[i])
     creatures3[i + 18] = currentImage[0]
   }
 
@@ -187,7 +191,10 @@ const animalArray = function (data) {
 document.getElementById('play')
 $('#play').on('click', startGame)
 
+const matchedArray = []
+
 function startGame () {
+  matchedArray.length = 0
   for (let c = 0; c < 36; c++) {
     $('#' + c).attr('data-animal-image', 0)
     console.log('game started')
@@ -283,5 +290,6 @@ module.exports = {
   animalArray,
   locked,
   unlocked,
-  createFavoriteSuccess
+  createFavoriteSuccess,
+  matchedArray
 }
