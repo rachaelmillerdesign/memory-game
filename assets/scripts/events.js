@@ -64,9 +64,6 @@ let flippedCards = []
 const showFront = function (e) {
   const newSrc = $(e.target).attr('data-animal-image')
   $(e.target).attr('src', newSrc)
-  // if ($(e.target).attr('data-animal-image')("clicked") === true) {
-  //  $(event.target).off()
-  //  setTimeout($(event.target).on(), 2000)
   console.log('e.target: ')
   // console.log(e.target)
   // console.log($(e.target).attr('data-animal-image'))
@@ -92,7 +89,6 @@ const showFront = function (e) {
 // ~~~~~~~~~~~~~~~~~~~~~~
 const pickAFavorite = function () {
   // show one image of each pair matched to select a favorite from
-  // for (let i = 0; i < 36; i++) {
   const uniqueCreature = []
   $.each(store.creaturesGameInPlay, function (i, el) {
     if ($.inArray(el, uniqueCreature) === -1) {

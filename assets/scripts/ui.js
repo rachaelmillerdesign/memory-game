@@ -3,9 +3,9 @@
 const store = require('./store')
 // const events = require('./events')
 
-// ~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~
 // LOCK BOARD
-// ~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~
 const unlocked = function () {
   $('img').removeClass('unclickable')
 }
@@ -13,7 +13,9 @@ const unlocked = function () {
 const locked = function () {
   $('img').addClass('unclickable')
 }
-
+// ~~~~~~~~~~~~~~~~~~~~~~
+// SIGN UP IN OUT AUTH
+// ~~~~~~~~~~~~~~~~~~~~~~
 const signUpSuccess = function (data) {
   $('#signUp-modal').addClass('hidden')
   $('#signUpNav').addClass('hidden')
@@ -61,6 +63,10 @@ const signInSuccess = function (data) {
   unlocked()
   console.log(store.user.id)
   $('#sign-in')[0].reset()
+  $('#clickPlayToPlay').removeClass('hidden')
+  setTimeout(function () {
+    $('#clickPlayToPlay').addClass('hidden')
+  }, 3000)
 }
 
 const signInFailure = function (error) {
@@ -148,7 +154,9 @@ function shuffle (array) {
   }
   return array
 }
-
+// ~~~~~~~~~~~~~~~~~~~~~~
+// FILL BOARD
+// ~~~~~~~~~~~~~~~~~~~~~~
 const animalArray = function (data) {
   // creatures is file name in database
   store.creatures = data.creatures
