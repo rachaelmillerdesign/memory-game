@@ -198,6 +198,7 @@ const addHandlers = () => {
   $('.favorites').on('click', 'img', createFavorite)
   $('.get-my-favorites-button').on('click', api.getMyFavoritesAjax)
   $('.close').on('click', ui.hideModal)
+  $('#sign-out-clicked').on('click', ui.hideSignOutModal)
 }
 
 module.exports = {

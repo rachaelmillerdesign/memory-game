@@ -26,6 +26,7 @@ const signUpSuccess = function (data) {
     $('#signUpSuccess').modal('hide')
   }, 2000)
   $('#sign-up')[0].reset()
+  $('#signIn-modal').removeClass('hidden')
   console.log('signUpSuccess ran. Data is :', data)
 }
 
@@ -249,6 +250,11 @@ const showSignOutModal = function () {
   $('#signOut-modal').toggleClass('hidden')
 }
 
+const hideSignOutModal = function () {
+  console.log('sign out clicked')
+  $('#signOut-modal').toggleClass('hidden')
+}
+
 const showChangePasswordModal = function () {
   console.log('password changed')
   $('#changePassword-modal').toggleClass('hidden')
@@ -275,6 +281,7 @@ module.exports = {
   showSignUpModal,
   showSignInModal,
   showSignOutModal,
+  hideSignOutModal,
   showChangePasswordModal,
   showGameStartedModal,
   hideModal,
