@@ -107,14 +107,16 @@ const pickAFavorite = function () {
 //   const data = {favorite: {
 //     creature_id: $(this).attr('data-id')
 //   }
-//     const checkForDup = function () {
-//     if $(this).attr('data-id') === store.data.favorite('data-id') {
-//       console.log('Already in favorites, please pick another favorite!')
-//     } else {
-//       creature_id: $(this).attr('data-id')
-//       }
-//     }
-//   }}
+//   }
+//   //   const checkForDup = function () {
+//   //   if $(this).attr('data-id') === store.data.favorite('data-id') {
+//   //     console.log('Already in favorites, please pick another favorite!')
+//   //   } else {
+//   //     creature_id: $(this).attr('data-id')
+//   //     }
+//   //   }
+//   // }}
+//   // console.log(store.data.favorites)
 //   console.log('pushed to favorites', data)
 //   api.createFavoriteAjax(data)
 //     .then(console.log)
@@ -124,9 +126,11 @@ const pickAFavorite = function () {
 
 const createFavorite = function (event) {
   event.preventDefault()
+  console.log(event)
   // format expected by backend:
   const data = {favorite: {
     creature_id: $(this).attr('data-id')
+    // creature_id: $(event).target.attribute('data-id')
   }}
   // if ($.inArray($(this).attr('data-id'), api.myFavorites) === -1) {
   console.log('pushed to favorites', data)
@@ -191,8 +195,6 @@ const addHandlers = () => {
   $('#signOutNav').on('click', ui.showSignOutModal)
   $('#changePasswordNav').on('click', ui.showChangePasswordModal)
   $('.tempEndGame').on('click', endGame)
-  $('.favorites').on('click', 'img', createFavorite)
-  $('.get-my-favorites-button').on('click', api.getMyFavoritesAjax)
   $('.close').on('click', ui.hideModal)
   $('#sign-out-clicked').on('click', ui.hideSignOutModal)
 }
