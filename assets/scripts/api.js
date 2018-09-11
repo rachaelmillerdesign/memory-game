@@ -58,6 +58,7 @@ const getAllCreaturesAjax = function () {
 
 const createFavoriteAjax = function (data) {
   console.log('in createFavoriteAjax')
+  console.log(data)
   return $.ajax({
     url: config.apiUrl + '/favorites',
     data: JSON.stringify(data),
@@ -69,7 +70,8 @@ const createFavoriteAjax = function (data) {
   })
 }
 
-const getMyFavoritesAjax = function (data) {
+const getMyFavoritesAjax = function () {
+  const data = []
   return $.ajax({
     url: config.apiUrl + '/favorites',
     method: 'GET',

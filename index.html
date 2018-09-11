@@ -13,23 +13,10 @@
   <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
   <style>
   body {font-family: "Josefin Sans", 'sans-serif';}
-    /* .container {
-          display: grid;
-          grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-          grid-gap: 1.5vw;
-            } */
   </style>
 </head>
 
 <body class="container-fluid">
-
-  <!-- The Modal -->
-  <!-- <div class="modal hidden" id="playMemoryGame" role="dialog">
-      <button type="button" data-dismiss="modal" aria-label="Close">
-        <div class="modal-body">
-          <h4>play memory game!</h4>
-        </div>
-        </div> -->
 
   <!-- /The Modal -->
   <div class="modal hidden" id="signUp-modal" role="dialog">
@@ -64,7 +51,7 @@
     <form id="sign-out" class="hidden border">
       <fieldset>
         <legend>Sign Out!</legend>
-        <input class="submit" type="submit" value="Sign out!">
+        <input id="sign-out-clicked" class="submit" type="submit" value="Sign out!">
       </fieldset>
       <button type="button" class="button close" data-dismiss="modal">x</button>
     </form>
@@ -155,6 +142,12 @@
     </div>
   </div>
 
+    <div class="modal hidden" id="createdFavoriteFailure" role="dialog">
+      <div class="modal-overlay"></div>
+      <div class="modal-body">
+        <h4>Failed to add favorite.</h4>
+      </div>
+    </div>
   <!-- <div class="modal hidden" id="playAgain" role="dialog">
     <div class="modal-overlay"></div>
     <div class="modal-body">
@@ -168,13 +161,13 @@
       <h4>Let's go!</h4>
     </div>
   </div>
-<!--
+
   <div class="modal hidden" id="clickPlayToPlay" role="dialog">
     <div class="modal-overlay"></div>
     <div class="modal-body">
       <h4>Please click 'play' to play!</h4>
     </div>
-  </div> -->
+  </div>
 
   <ul class='nav'>
     <li><a id='signUpNav'>SIGN UP</a></li>
@@ -186,7 +179,6 @@
     <li><a id='playAgain' class='hidden'>PLAY AGAIN</a></li>
   </ul>
 
-  <!-- <h2 class='hidden'>FIND THE PAIRS</h2> -->
   <!-- <div class="container"> -->
   <ul class="board">
     <li><img id="0" class="cardBack locked" src="public/images/241_square.jpg" /></li>
@@ -229,7 +221,8 @@
   <!-- </div> -->
   <ul class="favorites"></ul>
   <ul class="myFavorites"></ul>
-  <!-- <button class='get-my-favorites-button'>click</button> -->
+
+  <button class='tempEndGame'>click</button>
 </body>
 
 </html>

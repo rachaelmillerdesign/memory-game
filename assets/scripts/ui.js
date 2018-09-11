@@ -1,10 +1,11 @@
 'use strict'
 
 const store = require('./store')
+// const events = require('./events')
 
-// ~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~
 // LOCK BOARD
-// ~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~
 const unlocked = function () {
   $('img').removeClass('unclickable')
 }
@@ -12,7 +13,9 @@ const unlocked = function () {
 const locked = function () {
   $('img').addClass('unclickable')
 }
-
+// ~~~~~~~~~~~~~~~~~~~~~~
+// SIGN UP IN OUT AUTH
+// ~~~~~~~~~~~~~~~~~~~~~~
 const signUpSuccess = function (data) {
   $('#signUp-modal').addClass('hidden')
   $('#signUpNav').addClass('hidden')
@@ -25,6 +28,7 @@ const signUpSuccess = function (data) {
     $('#signUpSuccess').modal('hide')
   }, 2000)
   $('#sign-up')[0].reset()
+  $('#signIn-modal').removeClass('hidden')
   console.log('signUpSuccess ran. Data is :', data)
 }
 
@@ -59,6 +63,10 @@ const signInSuccess = function (data) {
   unlocked()
   console.log(store.user.id)
   $('#sign-in')[0].reset()
+  $('#clickPlayToPlay').removeClass('hidden')
+  setTimeout(function () {
+    $('#clickPlayToPlay').addClass('hidden')
+  }, 3000)
 }
 
 const signInFailure = function (error) {
@@ -81,6 +89,9 @@ const signOutSuccess = function () {
   $('#favorites').addClass('hidden')
   $('#play').addClass('hidden')
   $('#sign-out').addClass('hidden')
+  for (let c = 0; c < 36; c++) {
+    $('.cardBack').attr('src', 'public/images/241_square.jpg')
+  }
   $('#signOutSuccess').modal({
     show: true
   })
@@ -126,15 +137,6 @@ const changePasswordFailure = function (error) {
   console.error('changePasswordFailure ran. Error is :', error)
 }
 
-// const foundAllMatchesSuccess = function () {
-//   $('#found all matches').modal({
-//     show: true
-//   })
-//   setTimeout(function () {
-//     $('#foundAllMatchesSuccess').modal('hide')
-//   }, 2000)
-// }
-
 // // ~~~~~~~~~~~~~~~~~~~~~
 // // SHUFFLE CARDS (Fisher-Yates Shuffle)
 // // ~~~~~~~~~~~~~~~~~~~~~
@@ -152,11 +154,13 @@ function shuffle (array) {
   }
   return array
 }
-
+// ~~~~~~~~~~~~~~~~~~~~~~
+// FILL BOARD
+// ~~~~~~~~~~~~~~~~~~~~~~
 const animalArray = function (data) {
   // creatures is file name in database
   store.creatures = data.creatures
-  console.log(data.creatures)
+  // console.log(data.creatures)
   // creatures2 is an array from store.creatures
   const creatures2 = Array.from(store.creatures)
   // creatures3 is an empty array that creatures to gets shuffled and put into
@@ -166,9 +170,9 @@ const animalArray = function (data) {
     const randomIndex = Math.floor(Math.random() * (creatures2.length))
     // randomly select image from randomly selected array creatures3, double and shuffle)
     currentImage = creatures2.splice(randomIndex, 1)
-    console.log(creatures2[i])
+    // console.log(creatures2[i])
     creatures3[i] = currentImage[0]
-    console.log(creatures3[i])
+    // console.log(creatures3[i])
     creatures3[i + 18] = currentImage[0]
   }
 
@@ -187,7 +191,10 @@ const animalArray = function (data) {
 document.getElementById('play')
 $('#play').on('click', startGame)
 
+const matchedArray = []
+
 function startGame () {
+  matchedArray.length = 0
   for (let c = 0; c < 36; c++) {
     $('#' + c).attr('data-animal-image', 0)
     console.log('game started')
@@ -224,6 +231,14 @@ const createFavoriteSuccess = function () {
   }, 2000)
 }
 
+const createFavoriteFailure = function () {
+  $('#createdFavoriteFailure').modal({
+    show: true
+  })
+  setTimeout(function () {
+    $('#createdFavoriteFailure').modal('hide')
+  }, 2000)
+}
 // ~~~~~~~~~~~~~~~~~~~~~~
 // NAVBAR
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -239,6 +254,11 @@ const showSignInModal = function () {
 }
 
 const showSignOutModal = function () {
+  console.log('sign out clicked')
+  $('#signOut-modal').toggleClass('hidden')
+}
+
+const hideSignOutModal = function () {
   console.log('sign out clicked')
   $('#signOut-modal').toggleClass('hidden')
 }
@@ -269,6 +289,7 @@ module.exports = {
   showSignUpModal,
   showSignInModal,
   showSignOutModal,
+  hideSignOutModal,
   showChangePasswordModal,
   showGameStartedModal,
   hideModal,
@@ -283,5 +304,7 @@ module.exports = {
   animalArray,
   locked,
   unlocked,
-  createFavoriteSuccess
+  createFavoriteSuccess,
+  createFavoriteFailure,
+  matchedArray
 }
