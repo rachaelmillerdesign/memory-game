@@ -37,7 +37,7 @@ const signOut = function () {
 }
 
 const changePassword = function (data) {
-  console.log('data is ', data)
+//  console.log('data is ', data)
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
@@ -62,8 +62,8 @@ const getAllCreaturesAjax = function () {
 }
 
 const createFavoriteAjax = function (data) {
-  console.log('in createFavoriteAjax')
-  console.log(data)
+//  console.log('in createFavoriteAjax')
+//  console.log(data)
   return $.ajax({
     url: config.apiUrl + '/favorites',
     data: JSON.stringify(data),
@@ -87,7 +87,7 @@ const getMyFavoritesAjax = function () {
     },
     data,
     success: function (data) {
-      console.log('in ajax data and response is', data)
+//      console.log('in ajax data and response is', data)
       for (let e = 0; e < data.favorites.length; e++) {
         $('.myFavorites').append(`<li><img src='${data.favorites[e].creature.image}'/></li>`)
       }

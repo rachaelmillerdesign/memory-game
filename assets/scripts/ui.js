@@ -29,7 +29,7 @@ const signUpSuccess = function (data) {
   }, 2000)
   $('#sign-up')[0].reset()
   $('#signIn-modal').removeClass('hidden')
-  console.log('signUpSuccess ran. Data is :', data)
+//  console.log('signUpSuccess ran. Data is :', data)
 }
 
 const signUpFailure = function (error) {
@@ -52,7 +52,7 @@ const signInSuccess = function (data) {
   $('#changePasswordNav').removeClass('hidden')
   $('#favorites').removeClass('hidden')
   $('#play').removeClass('hidden')
-  console.log('signInSuccess ran. Data is :', data)
+//  console.log('signInSuccess ran. Data is :', data)
   $('#signInSuccess').modal({
     show: true
   })
@@ -61,7 +61,7 @@ const signInSuccess = function (data) {
   }, 2000)
   store.user = data.user
   unlocked()
-  console.log(store.user.id)
+//  console.log(store.user.id)
   $('#sign-in')[0].reset()
   $('#clickPlayToPlay').removeClass('hidden')
   setTimeout(function () {
@@ -197,7 +197,7 @@ function startGame () {
   matchedArray.length = 0
   for (let c = 0; c < 36; c++) {
     $('#' + c).attr('data-animal-image', 0)
-    console.log('game started')
+//    console.log('game started')
     $('#gameStarted').removeClass('hidden')
     setTimeout(function () {
       $('#gameStarted').addClass('hidden')
@@ -244,32 +244,32 @@ const createFavoriteFailure = function () {
 // ~~~~~~~~~~~~~~~~~~~~~~
 
 const showSignUpModal = function () {
-  console.log('sign Up clicked')
+//  console.log('sign Up clicked')
   $('#signUp-modal').toggleClass('hidden')
 }
 
 const showSignInModal = function () {
-  console.log('sign in clicked')
+//  console.log('sign in clicked')
   $('#signIn-modal').toggleClass('hidden')
 }
 
 const showSignOutModal = function () {
-  console.log('sign out clicked')
+//  console.log('sign out clicked')
   $('#signOut-modal').toggleClass('hidden')
 }
 
 const hideSignOutModal = function () {
-  console.log('sign out clicked')
+//  console.log('sign out clicked')
   $('#signOut-modal').toggleClass('hidden')
 }
 
 const showChangePasswordModal = function () {
-  console.log('password changed')
+//  console.log('password changed')
   $('#changePassword-modal').toggleClass('hidden')
 }
 
 const showGameStartedModal = function () {
-  console.log('play again!')
+//  console.log('play again!')
   $('#gameStarted').removeClass('hidden')
   setTimeout(function () {
     $('#gameStarted').addClass('hidden')
@@ -277,7 +277,7 @@ const showGameStartedModal = function () {
 }
 
 const hideModal = function () {
-  console.log('close button clicked')
+//  console.log('close button clicked')
   $('.modal').addClass('hidden')
 }
 

@@ -11,7 +11,7 @@ const store = require('./store')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log('sign up ran!')
+//  console.log('sign up ran!')
 
   const data = getFormFields(this)
   api.signUp(data)
@@ -21,7 +21,7 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  console.log('sign in ran!')
+//  console.log('sign in ran!')
 
   const data = getFormFields(this)
   api.signIn(data)
@@ -31,7 +31,7 @@ const onSignIn = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
-  console.log('sign out ran')
+//  console.log('sign out ran')
 
   api.signOut()
     .then(ui.signOutSuccess)
@@ -40,7 +40,7 @@ const onSignOut = function (event) {
 
 const onChangePassword = function (event) {
   event.preventDefault()
-  console.log('change password ran!')
+//  console.log('change password ran!')
 
   const data = getFormFields(this)
   api.changePassword(data)
@@ -53,7 +53,7 @@ const onGetAllCreatures = function (event) {
   api.getAllCreaturesAjax()
     .then(ui.animalArray)
     // .then(ui.fillBoard)
-  console.log('index()')
+//  console.log('index()')
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~
@@ -64,21 +64,21 @@ let flippedCards = []
 const showFront = function (e) {
   const newSrc = $(e.target).attr('data-animal-image')
   $(e.target).attr('src', newSrc)
-  console.log('e.target: ')
+//  console.log('e.target: ')
   // console.log(e.target)
   // console.log($(e.target).attr('data-animal-image'))
   flippedCards.push(e.target)
-  console.log(':' + $(flippedCards[0]).attr('data-animal-image'))
+//  console.log(':' + $(flippedCards[0]).attr('data-animal-image'))
   if (flippedCards.length === 2) {
     // setTimeout(function () { 'locked' }, 1000)
     // console.log('unclickable after 1 second')
     if ($(flippedCards[0]).attr('data-animal-image') === $(flippedCards[1]).attr('data-animal-image')) {
-      console.log('cards match ' + $(flippedCards[0]).attr('data-animal-image') + ' ' + $(flippedCards[1]).attr('data-animal-image'))
+//      console.log('cards match ' + $(flippedCards[0]).attr('data-animal-image') + ' ' + $(flippedCards[1]).attr('data-animal-image'))
       match(flippedCards)
     } else {
-      console.log('showBack ' + flippedCards[0].id + ' ' + flippedCards[1].id)
+//      console.log('showBack ' + flippedCards[0].id + ' ' + flippedCards[1].id)
       setTimeout(showBack, 2000, flippedCards)
-      console.log('after timeout')
+//      console.log('after timeout')
     }
     flippedCards = []
   }
@@ -94,7 +94,7 @@ const pickAFavorite = function () {
     if ($.inArray(el, uniqueCreature) === -1) {
       uniqueCreature.push(el)
       $('.favorites').append(`<li><img data-id='${store.creaturesGameInPlay[i].id}' src='${store.creaturesGameInPlay[i].image}'/></li>`)
-      console.log('creature is ', store.creaturesGameInPlay[i])
+//      console.log('creature is ', store.creaturesGameInPlay[i])
     }
   })
   $('.favorites').removeClass('hidden')
@@ -126,16 +126,16 @@ const pickAFavorite = function () {
 
 const createFavorite = function (event) {
   event.preventDefault()
-  console.log(event)
+//  console.log(event)
   // format expected by backend:
   const data = {favorite: {
     creature_id: $(this).attr('data-id')
     // creature_id: $(event).target.attribute('data-id')
   }}
   // if ($.inArray($(this).attr('data-id'), api.myFavorites) === -1) {
-  console.log('pushed to favorites', data)
+//  console.log('pushed to favorites', data)
   api.createFavoriteAjax(data)
-    .then(console.log)
+//    .then(console.log)
     .then(ui.createFavoriteSuccess)
     .catch(ui.createFavoriteFailure)
 }
@@ -145,8 +145,8 @@ const createFavorite = function (event) {
 // ~~~~~~
 
 const endGame = function () {
-  console.log('end game clicked')
-  console.log('game over')
+//  console.log('end game clicked')
+//  console.log('game over')
   pickAFavorite()
   $('#play').addClass('hidden')
   $('#playAgain').removeClass('hidden')
@@ -163,9 +163,9 @@ const match = function (matchedCards) {
   $(matchedCards[1]).addClass('unclickable')
   ui.matchedArray.push($(matchedCards[0]))
   ui.matchedArray.push($(matchedCards[1]))
-  console.log($(matchedCards[0]))
-  console.log($(matchedCards[1]))
-  console.log('length = ' + ui.matchedArray.length)
+//  console.log($(matchedCards[0]))
+//  console.log($(matchedCards[1]))
+//  console.log('length = ' + ui.matchedArray.length)
   if (ui.matchedArray.length === 36) {
     endGame()
   }
