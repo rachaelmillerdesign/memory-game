@@ -5,6 +5,8 @@ As the capstone project for General Assembly's bootcamp-style, 520+ hours, Web D
 
 The deployed site can be found here:  https://rachaelmillerdesign.github.io/memory-game/
 
+![Imgur](https://i.imgur.com/U5QqONx.png)
+
 This GitHub page is the front end of the application. The back end can be found here: 
 
 https://github.com/rachaelmillerdesign/memory-game-api
