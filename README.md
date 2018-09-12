@@ -3,7 +3,7 @@ NO ORDINARY WORLD MEMORY GAME
 
 As the capstone project for General Assembly's bootcamp-style, 520+ hours, Web Development Immersive, I created a memory game featuring artwork I had done of a variety of animals, mostly endangered. It is a single page, cloud-based, full-stack application.
 
-The deployed site can be found here:
+The deployed site can be found here:  https://rachaelmillerdesign.github.io/memory-game/
 
 This GitHub page is the front end of the application. The back end can be found here: 
 
