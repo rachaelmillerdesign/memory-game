@@ -11,6 +11,7 @@ const signUp = function (data) {
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',
+    crossDomain: true,
     data
   })
 }
@@ -19,6 +20,7 @@ const signIn = function (data) {
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
+    crossDomain: true,
     data
   })
 }
@@ -27,6 +29,7 @@ const signOut = function () {
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
+    crossDomain: true,
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -38,6 +41,7 @@ const changePassword = function (data) {
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
+    crossDomain: true,
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
@@ -52,7 +56,8 @@ const changePassword = function (data) {
 const getAllCreaturesAjax = function () {
   return $.ajax({
     url: config.apiUrl + '/creatures',
-    method: 'GET'
+    method: 'GET',
+    crossDomain: true
   })
 }
 
@@ -64,6 +69,7 @@ const createFavoriteAjax = function (data) {
     data: JSON.stringify(data),
     contentType: 'application/json',
     method: 'POST',
+    crossDomain: true,
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -75,6 +81,7 @@ const getMyFavoritesAjax = function () {
   return $.ajax({
     url: config.apiUrl + '/favorites',
     method: 'GET',
+    crossDomain: true,
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
