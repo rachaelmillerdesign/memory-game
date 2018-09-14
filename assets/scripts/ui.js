@@ -88,6 +88,7 @@ const signOutSuccess = function () {
   $('#changePasswordNav').addClass('hidden')
   $('#favorites').addClass('hidden')
   $('#play').addClass('hidden')
+  $('#playAgain').addClass('hidden')
   $('#sign-out').addClass('hidden')
   for (let c = 0; c < 36; c++) {
     $('.cardBack').attr('src', 'public/images/241_square.jpg')
@@ -158,6 +159,8 @@ function shuffle (array) {
 // FILL BOARD
 // ~~~~~~~~~~~~~~~~~~~~~~
 const animalArray = function (data) {
+  $('#play').addClass('hidden')
+  $('#quit').removeClass('hidden')
   // creatures is file name in database
   store.creatures = data.creatures
   // console.log(data.creatures)
@@ -209,6 +212,9 @@ document.getElementById('playAgain')
 $('#playAgain').on('click', newGame)
 
 function newGame () {
+  $('#play').addClass('hidden')
+  $('#playAgain').addClass('hidden')
+  $('#quit').removeClass('hidden')
   $('.favorites').addClass('hidden')
   $('.board').removeClass('hidden')
   $('.myFavorites').addClass('hidden')
