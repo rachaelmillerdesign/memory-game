@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+.maxWidth {
+  // background-color: #f0e4cd;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: auto;
+}
 
 * {
   font-family: 'Josefin', sans-serif;
@@ -28,7 +35,7 @@ ul {
   grid-template-columns: repeat(6, 1fr);
   margin: 0 auto;
   max-width: 90%;
-  padding: 1vw 0 0;
+  padding: 2vw 0 2vw 0;
 }
 
 li {
@@ -64,11 +71,24 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 // ~~~~~~~~~~~~~~~~~~~~~
 // NAVBAR
 // ~~~~~~~~~~~~~~~~~~~~~
+#navbar {
+  display: grid;
+  grid-gap: .35vw;
+  grid-template-columns: repeat(8, 1fr);
+  margin: 0 auto;
+  max-width: 90%;
+  padding: 1vw 0 0;
+}
+
 .nav {
   color: grey;
-  font-size: 2vw;
+  font-size: 1.75vw;
   font-weight: 400;
   padding: 2vw;
+}
+
+.nav li {
+  padding: 2px;
 }
 
 .nav li:hover {
