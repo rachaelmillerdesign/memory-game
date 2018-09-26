@@ -26,7 +26,7 @@ const signUpSuccess = function (data) {
   })
   setTimeout(function () {
     $('#signUpSuccess').modal('hide')
-  }, 2000)
+  }, 1000)
   $('#sign-up')[0].reset()
   $('#signIn-modal').removeClass('hidden')
 //  console.log('signUpSuccess ran. Data is :', data)
@@ -39,7 +39,7 @@ const signUpFailure = function (error) {
   })
   setTimeout(function () {
     $('#signUpFailure').modal('hide')
-  }, 2000)
+  }, 1000)
   $('#sign-up')[0].reset()
   console.error('signUpFailure ran. Error is :', error)
 }
@@ -58,7 +58,7 @@ const signInSuccess = function (data) {
   })
   setTimeout(function () {
     $('#signInSuccess').modal('hide')
-  }, 2000)
+  }, 1000)
   store.user = data.user
   unlocked()
 //  console.log(store.user.id)
@@ -76,7 +76,7 @@ const signInFailure = function (error) {
   })
   setTimeout(function () {
     $('#signInFailure').modal('hide')
-  }, 2000)
+  }, 1000)
   $('#sign-in')[0].reset()
   console.error('signInFailure ran. Error is :', error)
 }
@@ -98,7 +98,7 @@ const signOutSuccess = function () {
   })
   setTimeout(function () {
     $('#signOutSuccess').modal('hide')
-  }, 2000)
+  }, 1000)
   $('#sign-out')[0].reset()
   store.user = null
 }
@@ -110,7 +110,7 @@ const signOutFailure = function (error) {
   })
   setTimeout(function () {
     $('#signOutFailure').modal('hide')
-  }, 2000)
+  }, 1000)
   $('#sign-out')[0].reset()
   console.error('signOutFailure ran. Error is :', error)
 }
@@ -122,7 +122,7 @@ const changePasswordSuccess = function () {
   })
   setTimeout(function () {
     $('#changePasswordSuccess').modal('hide')
-  }, 2000)
+  }, 1000)
   $('#change-password')[0].reset()
 }
 
@@ -133,7 +133,7 @@ const changePasswordFailure = function (error) {
   })
   setTimeout(function () {
     $('#changePasswordFailure').modal('hide')
-  }, 2000)
+  }, 1000)
   $('#change-password')[0].reset()
   console.error('changePasswordFailure ran. Error is :', error)
 }
@@ -204,7 +204,7 @@ function startGame () {
     $('#gameStarted').removeClass('hidden')
     setTimeout(function () {
       $('#gameStarted').addClass('hidden')
-    }, 2000)
+    }, 1000)
   }
 }
 
@@ -234,7 +234,7 @@ const createFavoriteSuccess = function () {
   })
   setTimeout(function () {
     $('#createdFavoriteSuccess').modal('hide')
-  }, 2000)
+  }, 1000)
 }
 
 const createFavoriteFailure = function () {
@@ -243,7 +243,7 @@ const createFavoriteFailure = function () {
   })
   setTimeout(function () {
     $('#createdFavoriteFailure').modal('hide')
-  }, 2000)
+  }, 1000)
 }
 // ~~~~~~~~~~~~~~~~~~~~~~
 // NAVBAR

@@ -93,13 +93,13 @@ const pickAFavorite = function () {
   $.each(store.creaturesGameInPlay, function (i, el) {
     if ($.inArray(el, uniqueCreature) === -1) {
       uniqueCreature.push(el)
-      $('.favorites').append(`<li><img data-id='${store.creaturesGameInPlay[i].id}' src='${store.creaturesGameInPlay[i].image}'/></li>`)
-//      console.log('creature is ', store.creaturesGameInPlay[i])
+      $('.favorites').append(`<li><img class='eachFave' data-id='${store.creaturesGameInPlay[i].id}' src='${store.creaturesGameInPlay[i].image}'/></li>`)
+      //      console.log('creature is ', store.creaturesGameInPlay[i])
     }
   })
   $('.favorites').removeClass('hidden')
   $('.board').addClass('hidden')
-  $('.favorites').on('click', createFavorite)
+  $('.eachFave').on('click', createFavorite)
 }
 
 // const createFavorite = function (event) {
@@ -126,16 +126,18 @@ const pickAFavorite = function () {
 
 const createFavorite = function (event) {
   event.preventDefault()
-//  console.log(event)
+  // console.log('in createFavorite')
+  // console.log(event)
+  // console.log(this)
   // format expected by backend:
   const data = {favorite: {
     creature_id: $(this).attr('data-id')
     // creature_id: $(event).target.attribute('data-id')
   }}
   // if ($.inArray($(this).attr('data-id'), api.myFavorites) === -1) {
-//  console.log('pushed to favorites', data)
+  // console.log('pushed to favorites', data)
   api.createFavoriteAjax(data)
-//    .then(console.log)
+  //    .then(console.log)
     .then(ui.createFavoriteSuccess)
     .catch(ui.createFavoriteFailure)
 }
@@ -145,8 +147,8 @@ const createFavorite = function (event) {
 // ~~~~~~
 
 const endGame = function () {
-//  console.log('end game clicked')
-//  console.log('game over')
+  //  console.log('end game clicked')
+  //  console.log('game over')
   pickAFavorite()
   $('#play').addClass('hidden')
   $('#playAgain').removeClass('hidden')
@@ -163,11 +165,16 @@ const match = function (matchedCards) {
   $(matchedCards[1]).addClass('unclickable')
   ui.matchedArray.push($(matchedCards[0]))
   ui.matchedArray.push($(matchedCards[1]))
-//  console.log($(matchedCards[0]))
-//  console.log($(matchedCards[1]))
-//  console.log('length = ' + ui.matchedArray.length)
-  if (ui.matchedArray.length === 36) {
+  //  console.log($(matchedCards[0]))
+  //  console.log($(matchedCards[1]))
+  //  console.log('length = ' + ui.matchedArray.length)
+  if (ui.matchedArray.length === 2) {
+    // if (ui.matchedArray.length === 36)
     endGame()
+    // works:
+  //   setTimeout(function () {
+  //     endGame()
+  //   }, 3500)
   }
 }
 
@@ -181,7 +188,7 @@ const showBack = function (selector) {
 // HANDLERS
 // ~~~~~~~~~~~~~~~~~~~~~~
 const addHandlers = () => {
-  console.log("in handler 'click'")
+//  console.log("in handler 'click'")
   // $('#closeButton').on('click', closeModals)
   $('img').on('click', showFront, ui.checkForMatch)
   $('#play').on('click', onGetAllCreatures)
