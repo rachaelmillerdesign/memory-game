@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+  <style>
+  body {font-family: "Josefin Sans", 'sans-serif';}
+  </style>
+</head>
+
+<body class="container-fluid">
+<div class="maxWidth">
+  <!-- /The Modal -->
+  <div class="modal hidden" id="signUp-modal" role="dialog">
+    <div class="modal-overlay"></div>
+    <form id="sign-up" class="border">
+      <fieldset>
+        <legend>SIGN UP!</legend>
+        <input type="text" name="credentials[email]" placeholder="Email">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+        <input class="submit" type="submit" value="Sign up!">
+      </fieldset>
+      <button type="button" class="button close" data-dismiss="modal">x</button>
+    </form>
+  </div>
+
+  <div class="modal hidden" id="signIn-modal" role="dialog">
+    <div class="modal-overlay"></div>
+    <form id="sign-in" class="border">
+      <fieldset>
+        <legend>Sign in!</legend>
+        <input type="text" name="credentials[email]" placeholder="Email">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <input class="submit" type="submit" value="Sign in!">
+      </fieldset>
+      <button type="button" class="button close" data-dismiss="modal">x</button>
+    </form>
+  </div>
+
+  <div class="modal hidden" id="signOut-modal" role="dialog">
+    <div class="modal-overlay"></div>
+    <form id="sign-out" class="hidden border">
+      <fieldset>
+        <legend>Sign Out!</legend>
+        <input id="sign-out-clicked" class="submit" type="submit" value="Sign out!">
+      </fieldset>
+      <button type="button" class="button close" data-dismiss="modal">x</button>
+    </form>
+  </div>
+
+  <div class="modal hidden" id=changePassword-modal role="dialog">
+    <div class="modal-overlay"></div>
+    <form id="change-password" class="border">
+      <fieldset>
+        <legend>Change Password!</legend>
+        <input type="password" name="passwords[old]" placeholder="Old Password">
+        <input type="password" name="passwords[new]" placeholder="New Password">
+        <input class="submit" type="submit" value="Change Password!">
+      </fieldset>
+      <button type="button" class="button close" data-dismiss="modal">x</button>
+    </form>
+  </div>
+
+  <div class="modal hidden" id="signInSuccess" role="dialog">
+    <div class="modal-overlay"></div>
+        <div class="modal-body">
+      <h4>sign in successful!</h4>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="signInFailure" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>sign in failed!</h4>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="signUpSuccess" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>sign up successful!</h4>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="signUpFailure" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>sign up failed!</h4>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="signOutSuccess" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>sign out successful!</h4>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="signOutFailure" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>sign out failed!</h4>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="changePasswordSuccess" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>password changed!</h4>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="changePasswordFailure" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>password not changed!</h4>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="foundAllMatchesSuccess" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>Congratulations!!</h4>
+      <p>You found all the matches!</p>
+      <p>Please add a favorite creature!'</p>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="createdFavoriteSuccess" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>Added favorite!</h4>
+    </div>
+  </div>
+
+    <div class="modal hidden" id="createdFavoriteFailure" role="dialog">
+      <div class="modal-overlay"></div>
+      <div class="modal-body">
+        <h4>Failed to add favorite.</h4>
+      </div>
+    </div>
+  <!-- <div class="modal hidden" id="playAgain" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>Play again?</h4>
+    </div>
+  </div> -->
+
+  <div class="modal hidden" id="gameStarted" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>Let's go!</h4>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="clickPlayToPlay" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+      <h4>Please click 'play' to play!</h4>
+    </div>
+  </div>
+
+  <ul id="navbar" class="nav">
+    <li><a id='signUpNav'>SIGN UP</a></li>
+    <li><a id='signInNav'>SIGN IN</a></li>
+    <li><a id='signOutNav' class='hidden'>SIGN OUT</a></li>
+    <li><a id='changePasswordNav' class='hidden'>CHANGE PASSWORD</a></li>
+    <li><a id='favorites' class='hidden'>MY FAVORITES</a></li>
+    <li><a id='play' class='hidden'>PLAY!</a></li>
+    <li><a id='playAgain' class='hidden'>PLAY AGAIN</a></li>
+    <li><a id='quit' class='hidden'>QUIT</a></li>
+  </ul>
+
+  <!-- <div class="container"> -->
+  <ul class="board">
+    <li><img id="0" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="1" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="2" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="3" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="4" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="5" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="6" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="7" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="8" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="9" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="10" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="11" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="12" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="13" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="14" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="15" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="16" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="17" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="18" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="19" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="20" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="21" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="22" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="23" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="24" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="25" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="26" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="27" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="28" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="29" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="30" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="31" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="32" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="33" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="34" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+    <li><img id="35" class="cardBack locked" src="public/images/241_square.jpg" /></li>
+  </ul>
+  <!-- </div> -->
+  <ul class="favorites"></ul>
+  <ul class="myFavorites"></ul>
+
+  <!-- <button class='tempEndGame'>click</button> -->
+</div>
+</body>
+
+</html>
