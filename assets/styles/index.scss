@@ -126,12 +126,12 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 }
 
 
-@media only screen and (max-width: 1500px) and (min-width: 900px) {
-  .border {
-    font-size: 20px;
-    max-width: 360px;
-  }
-}
+// @media only screen and (max-width: 1500px) and (min-width: 900px) {
+//   .border {
+//     font-size: 20px;
+//     max-width: 360px;
+//   }
+// }
 
 /* The Modal (background) */
 .modal-overlay {
@@ -214,11 +214,11 @@ legend {
   -webkit-padding-start: 5px;
 }
 
-@media only screen and (max-width: 1500px) and (min-width: 900px) {
-  legend {
-  font-size: 36px;
-  }
-}
+// @media only screen and (max-width: 1500px) and (min-width: 900px) {
+//   legend {
+//   font-size: 36px;
+//   }
+// }
 
 fieldset {
   border: 0;
