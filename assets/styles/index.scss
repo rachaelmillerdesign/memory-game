@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
 .maxWidth {
   // background-color: #f0e4cd;
   position: relative;
@@ -116,12 +117,20 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   padding: 5vw, 2vw, 2vw, 2vw;
   -webkit-margin: 0;
   // width: 500px;
-  max-width: 60%; /* Could be more or less, depending on screen size */
+  max-width: 50%; /* Could be more or less, depending on screen size */
   z-index: 100;
-  left: 50%;
+  left: 45%;
   top: 20%;
   /* Use this for centering if unknown width/height */
   transform: translate(-50%, -50%);
+}
+
+
+@media only screen and (max-width: 1500px) and (min-width: 900px) {
+  .border {
+    font-size: 20px;
+    max-width: 360px;
+  }
 }
 
 /* The Modal (background) */
@@ -146,9 +155,9 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
   border-width: thick;
   padding: 5px;
   font-family: 'Josefin', sans-serif;;
-  font-size: 5vw;
+  font-size: 4vw;
   font-weight: 400;
-  max-width: 60%; /* Could be more or less, depending on screen size */
+  max-width: 40%; /* Could be more or less, depending on screen size */
   z-index: 100;
   left: 50%;
   top: 20%;
@@ -160,11 +169,11 @@ img, img.scale-with-grid { outline: 0; max-width: 100%; height: auto; }
 .close {
   color: #aaa;
   // float: right;
-  font-size: 6vw;
-  font-weight: 400;
+  font-size: 4.5vw;
+  font-weight: 500;
   float: right;
   padding: .5vw;
-  margin-right: 3vw;
+  margin-right: 2.5vw;
   color: #a7db23;
   border: none;
 }
@@ -205,6 +214,12 @@ legend {
   -webkit-padding-start: 5px;
 }
 
+@media only screen and (max-width: 1500px) and (min-width: 900px) {
+  legend {
+  font-size: 36px;
+  }
+}
+
 fieldset {
   border: 0;
   min-width: 0;
@@ -213,50 +228,3 @@ fieldset {
 body:not(:-moz-handler-blocked) fieldset {
   display: table-cell;
 }
-
- // ~~~~~~~~~~~~~~~~~~~~~
- // FLIP CARDS
- // ~~~~~~~~~~~~~~~~~~~~~
-
- /* entire container, keeps perspective */
- // .flip-container {
- // 	perspective: 1000px;
- // }
- // 	/* flip the pane when hovered */
- // 	.flip-container:hover .flipper, .flip-container.click .flipper {
- // 		transform: rotateY(180deg);
- // 	}
- //
- // .flip-container, .front, .back {
- // 	width: 320px;
- // 	height: 480px;
- // }
- //
- // /* flip speed goes here */
- // .flipper {
- // 	transition: 0.6s;
- // 	transform-style: preserve-3d;
- //
- // 	position: relative;
- // }
- //
- // /* hide back of pane during swap */
- // .front, .back {
- // 	backface-visibility: hidden;
- //
- // 	position: absolute;
- // 	top: 0;
- // 	left: 0;
- // }
- //
- // /* front pane, placed above back */
- // .front {
- // 	z-index: 2;
- // 	/* for firefox 31 */
- // 	transform: rotateY(0deg);
- // }
- //
- // /* back, initially hidden pane */
- // .back {
- // 	transform: rotateY(180deg);
- // }
